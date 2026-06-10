@@ -1,0 +1,5 @@
+config.py
+expenses.db
+bot.log
+__pycache__/
+*.pyc
