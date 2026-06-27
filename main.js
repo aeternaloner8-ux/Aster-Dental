@@ -1,51 +1,81 @@
-const header = document.querySelector("#header");
-const menuButton = document.querySelector("#menuButton");
-const mobileNav = document.querySelector("#mobileNav");
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => {
+  if (hdr) hdr.classList.toggle('scrolled', scrollY > 24);
+}, { passive: true });
 
-const syncHeader = () => {
-  header?.classList.toggle("scrolled", window.scrollY > 20);
-};
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (!entry.isIntersecting) return;
+    entry.target.style.transitionDelay = `${Math.min(index, 4) * 55}ms`;
+    entry.target.classList.add('in');
+    io.unobserve(entry.target);
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-syncHeader();
-window.addEventListener("scroll", syncHeader, { passive: true });
+const menuBtn = document.getElementById('menuBtn');
+const mnav = document.getElementById('mnav');
+const mnavClose = document.getElementById('mnavClose');
+function closeMenu() {
+  if (mnav) mnav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if (menuBtn && mnav) {
+  menuBtn.addEventListener('click', () => {
+    mnav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+}
+if (mnavClose) mnavClose.addEventListener('click', closeMenu);
+if (mnav) mnav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
-menuButton?.addEventListener("click", () => {
-  const isOpen = mobileNav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-});
-
-mobileNav?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileNav.classList.remove("open");
-    menuButton?.setAttribute("aria-expanded", "false");
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-const revealItems = document.querySelectorAll(".reveal");
+document.querySelectorAll('.faq-q').forEach((question) => {
+  question.addEventListener('click', () => question.parentElement.classList.toggle('open'));
+});
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("visible"));
+const videoTriggers = document.querySelectorAll('.video-trigger');
+if (videoTriggers.length) {
+  const modal = document.createElement('div');
+  modal.className = 'video-modal';
+  modal.innerHTML = `
+    <div class="video-modal__panel" role="dialog" aria-modal="true" aria-label="Видео Aster Dental">
+      <button class="video-modal__close" type="button" aria-label="Закрыть">×</button>
+      <span>Видео Aster Dental</span>
+      <h3></h3>
+      <p>Полную историю пациента покажем на консультации и подберем похожие клинические случаи под ваш запрос.</p>
+      <a class="ref-btn" href="contacts.html#appointment">Записаться на консультацию ↗</a>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const title = modal.querySelector('h3');
+  const close = () => modal.classList.remove('open');
+  modal.querySelector('.video-modal__close').addEventListener('click', close);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) close();
+  });
+  videoTriggers.forEach((button) => {
+    button.addEventListener('click', () => {
+      title.textContent = button.dataset.videoTitle || 'История пациента';
+      modal.classList.add('open');
+    });
+  });
 }
 
-document.querySelector("#contactForm")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const note = document.querySelector("#formNote");
-  if (note) {
-    note.textContent = "Заявка подготовлена. Подключите реальный обработчик формы перед публикацией.";
-  }
-  event.currentTarget.reset();
-});
+const form = document.getElementById('leadForm');
+if (form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    form.reset();
+    const message = document.getElementById('formMsg');
+    if (message) message.classList.add('show');
+  });
+}
