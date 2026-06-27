@@ -279,6 +279,8 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .ref-hero h1 span{display:inline-block;color:var(--ref-accent);text-transform:uppercase;letter-spacing:.035em}
 .ref-hero-cta{align-self:end}
 .ref-hero-cta p{font-size:18px;line-height:1.35;color:#8a8a8a;margin-bottom:22px}
+.ref-hero-servicebar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ref-line);border-bottom:1px solid var(--ref-line)}
+.ref-hero-servicebar span{background:#fff;padding:18px 62px;color:#777;font-size:14px;font-weight:700;letter-spacing:.01em}
 .ref-btn,.ref-program a,.ref-directions a,.ref-doctor a,.ref-review-stat a,.ref-footer-btn{
   display:inline-flex;align-items:center;justify-content:center;border-radius:7px;background:var(--ref-accent);color:#fff;font-weight:700;font-size:14px;padding:16px 26px;border:0;box-shadow:none
 }
@@ -316,7 +318,12 @@ footer a{display:block;margin:9px 0;font-weight:700}
 
 .ref-clinic{display:grid;grid-template-columns:1fr 470px;gap:52px;align-items:stretch;background:#fff;border-radius:10px;border:1px solid var(--ref-line);padding:44px}
 .ref-clinic h2{margin:28px 0 18px}
-.ref-clinic>img{width:100%;height:100%;min-height:390px;object-fit:cover;border-radius:8px}
+.ref-clinic-media{position:relative;min-height:430px;border-radius:8px;overflow:hidden;background:#ded6cd}
+.ref-clinic-media img{width:100%;height:100%;min-height:430px;object-fit:cover;object-position:center;filter:saturate(.78) contrast(.98) sepia(.05)}
+.ref-clinic-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(58,50,44,.48))}
+.ref-clinic-media div{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:#fff}
+.ref-clinic-media b{display:block;font-size:24px;font-weight:500;margin-bottom:6px}
+.ref-clinic-media span{display:block;max-width:360px;color:rgba(255,255,255,.78);font-size:14px;line-height:1.35}
 .ref-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
 .ref-mini-grid span{color:#777;font-size:14px;border-top:1px solid var(--ref-line);padding-top:12px}
 
@@ -351,8 +358,16 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .ref-review-stat a{margin-top:24px;width:100%}
 
 .ref-location-head{display:grid;grid-template-columns:240px minmax(0,680px);gap:46px;margin-bottom:48px}
-.ref-map{height:430px;border-radius:18px 18px 0 0;background:url("assets/smile-map.svg") center/cover no-repeat,#e9e5df;position:relative;filter:grayscale(.1) saturate(.72);overflow:hidden}
-.ref-map::after{content:"";position:absolute;inset:0;background:rgba(244,238,229,.52)}
+.google-map-link{display:block;color:inherit}
+.ref-map{height:430px;border-radius:18px 18px 0 0;background:#e9e5df;position:relative;overflow:hidden;border:1px solid var(--ref-line)}
+.ref-map::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(18deg,transparent 0 22%,rgba(255,255,255,.72) 22.4% 27.5%,transparent 28% 100%),
+  linear-gradient(-17deg,transparent 0 30%,rgba(255,255,255,.82) 30.4% 36.5%,transparent 37% 100%),
+  linear-gradient(83deg,transparent 0 44%,rgba(255,255,255,.56) 44.4% 49.5%,transparent 50% 100%),
+  radial-gradient(circle at 52% 52%,rgba(255,255,255,.8),rgba(255,255,255,0) 34%),
+  linear-gradient(135deg,#f1eee9,#ded7cf)}
+.ref-map::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(166,145,132,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(166,145,132,.08) 1px,transparent 1px);background-size:70px 70px;opacity:.8}
+.map-route{position:absolute;right:24px;top:24px;z-index:3;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#fff;padding:13px 20px;color:#716b66;font-size:14px;font-weight:800;box-shadow:0 14px 34px rgba(70,65,60,.1)}
 .ref-map-pin{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:22px 36px;font-size:18px;color:#777;box-shadow:0 18px 45px rgba(70,65,60,.12)}
 .ref-map-pin img{width:42px;height:42px}
 .ref-map-pin b{color:#444}
@@ -374,6 +389,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .contact-map-top h2{font-size:36px;font-weight:400;line-height:1.08;letter-spacing:-.035em;color:#45494b;margin-top:8px}
 .contact-map-visual{position:relative;height:430px;background:#e9e6df;overflow:hidden;border-top:1px solid var(--ref-line);border-bottom:1px solid var(--ref-line)}
 .contact-map-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.6),rgba(255,255,255,0) 44%),linear-gradient(135deg,rgba(255,255,255,.45),rgba(197,170,152,.18))}
+.contact-map-visual::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(166,145,132,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(166,145,132,.08) 1px,transparent 1px);background-size:64px 64px}
 .map-street{position:absolute;height:34px;background:rgba(255,255,255,.72);border:1px solid rgba(180,173,166,.28);border-radius:999px;transform-origin:center}
 .street-a{width:900px;left:-130px;top:130px;transform:rotate(-16deg)}
 .street-b{width:740px;right:-150px;top:245px;transform:rotate(18deg)}
@@ -382,7 +398,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .block-a{width:180px;height:110px;left:70px;top:45px}
 .block-b{width:210px;height:135px;right:90px;top:70px}
 .block-c{width:240px;height:120px;left:210px;bottom:130px}
-.map-pin-card{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:22px 34px;color:#777;font-size:18px;box-shadow:0 18px 45px rgba(70,65,60,.16)}
+.map-pin-card{position:absolute;left:50%;top:52%;z-index:3;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:22px 34px;color:#777;font-size:18px;box-shadow:0 18px 45px rgba(70,65,60,.16)}
 .map-pin-card img{width:42px;height:42px}.map-pin-card b{color:#45494b}
 .contact-details{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ref-line)}
 .contact-details div{background:#fff;padding:24px 28px}
@@ -397,6 +413,8 @@ footer a{display:block;margin:9px 0;font-weight:700}
   .ref-nav{grid-template-columns:1fr auto}
   .ref-menu,.ref-address{display:none}
   .ref-hero-top,.ref-section-head,.ref-clinic,.ref-review-title,.ref-location-head{grid-template-columns:1fr}
+  .ref-hero-servicebar{grid-template-columns:1fr}
+  .ref-hero-servicebar span{padding:16px 34px}
   .ref-programs,.ref-doctors{grid-template-columns:1fr 1fr}
   .ref-directions div{grid-template-columns:1fr 1fr}
   .ref-stats{grid-template-columns:repeat(3,1fr)}
@@ -423,10 +441,12 @@ footer a{display:block;margin:9px 0;font-weight:700}
   .ref-review-title,.ref-rating,.ref-video-card,.ref-text-review,.ref-before-after,.ref-review-stat{grid-column:auto!important}
   .ref-directions div{grid-template-columns:1fr;gap:10px}
   .ref-clinic{padding:24px}
-  .ref-clinic>img{min-height:260px}
+  .ref-clinic-media,.ref-clinic-media img{min-height:280px}
   .ref-review-title{display:block}
   .ref-rating>span{margin-left:0;display:block}
   .ref-video-card{min-height:360px}
+  .map-route{left:18px;right:18px;top:18px}
+  .ref-map-pin{width:86%;border-radius:18px;padding:18px;font-size:15px}
   .ref-footer-btn{width:100%}
   .contact-hero{padding:46px 0 34px}
   .contact-hero h1{font-size:42px}
