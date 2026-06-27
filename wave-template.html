@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAVE — маркетинговое агентство полного цикла</title>
+<style>
+  :root{
+    --bg:#0d0d0f;
+    --bg-soft:#15151a;
+    --surface:#1c1c23;
+    --text:#f4f4f6;
+    --muted:#9a9aa6;
+    --accent:#3d6bff;
+    --accent-soft:#2747a8;
+    --border:#2a2a33;
+    --radius:18px;
+    --max:1180px;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff;
+    padding:14px 26px;border-radius:999px;
+    font-weight:600;font-size:15px;border:none;cursor:pointer;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .btn:hover{background:#2e58e6;transform:translateY(-2px)}
+  .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface);border-color:var(--accent)}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,13,15,.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-weight:800;font-size:24px;letter-spacing:.04em}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:24px;height:2px;background:var(--text)}
+
+  /* Hero */
+  .hero{padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;top:-200px;right:-150px;
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,107,255,.22),transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--accent-soft);
+    padding:6px 14px;border-radius:999px;margin-bottom:26px;
+  }
+  .hero h1{font-size:clamp(36px,6vw,68px);line-height:1.05;font-weight:800;max-width:14ch}
+  .hero p.lead{margin:26px 0 36px;font-size:19px;color:var(--muted);max-width:54ch}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+  .metrics{display:flex;gap:48px;margin-top:64px;flex-wrap:wrap}
+  .metric .num{font-size:46px;font-weight:800;color:var(--text)}
+  .metric .num span{color:var(--accent)}
+  .metric .label{color:var(--muted);font-size:15px}
+
+  /* Section base */
+  section.block{padding:96px 0;border-top:1px solid var(--border)}
+  .sec-head{margin-bottom:54px;max-width:60ch}
+  .sec-tag{color:var(--accent);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin-top:12px}
+  .sec-head p{color:var(--muted);margin-top:16px;font-size:18px}
+
+  /* Services grid */
+  .grid{display:grid;gap:22px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:32px;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .card .ic{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;
+  }
+  .card h3{font-size:20px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* Methodology tabs */
+  .method{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:start}
+  .tabs{display:flex;flex-direction:column;gap:12px}
+  .tab{
+    text-align:left;background:var(--surface);border:1px solid var(--border);
+    color:var(--text);padding:22px 24px;border-radius:14px;cursor:pointer;
+    font-size:18px;font-weight:600;transition:.2s;display:flex;justify-content:space-between;
+  }
+  .tab.active{border-color:var(--accent);background:linear-gradient(135deg,rgba(61,107,255,.16),transparent)}
+  .tab .n{color:var(--muted);font-weight:500}
+  .tab-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;min-height:260px}
+  .tab-panel h3{font-size:26px;margin-bottom:16px}
+  .tab-panel p{color:var(--muted);font-size:17px;margin-bottom:14px}
+  .tab-panel ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .tab-panel li{padding-left:26px;position:relative;color:var(--muted)}
+  .tab-panel li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+  /* Media */
+  .media-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .media-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:36px;display:flex;flex-direction:column;justify-content:space-between;min-height:240px;
+  }
+  .media-card .play{
+    width:54px;height:54px;border-radius:50%;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:auto;
+  }
+  .media-card h3{font-size:24px;margin:24px 0 8px}
+  .media-card p{color:var(--muted)}
+
+  /* Cases */
+  .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .case{
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    background:var(--surface);transition:.2s;
+  }
+  .case:hover{border-color:var(--accent)}
+  .case .thumb{height:200px;background:linear-gradient(135deg,#23304f,#15151a);display:flex;align-items:flex-end;padding:24px}
+  .case .thumb .pill{background:rgba(255,255,255,.1);padding:6px 14px;border-radius:999px;font-size:13px}
+  .case .body{padding:26px}
+  .case .body h3{font-size:22px;margin-bottom:8px}
+  .case .body p{color:var(--muted);font-size:15px}
+  .case .body .res{display:flex;gap:28px;margin-top:18px}
+  .case .res b{display:block;font-size:24px;color:var(--accent)}
+  .case .res span{color:var(--muted);font-size:13px}
+
+  /* Team */
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .member{text-align:center}
+  .member .ph{
+    aspect-ratio:1;border-radius:var(--radius);
+    background:linear-gradient(135deg,#2a2a33,#15151a);margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;font-size:42px;color:var(--muted);
+  }
+  .member h4{font-size:18px}
+  .member span{color:var(--muted);font-size:14px}
+
+  /* CTA / form */
+  .cta-block{
+    background:linear-gradient(135deg,var(--accent-soft),#101018);
+    border:1px solid var(--border);border-radius:28px;padding:56px;
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  }
+  .cta-block h2{font-size:clamp(26px,3.5vw,40px);font-weight:800}
+  .cta-block p{color:#cfd6f0;margin-top:14px;font-size:17px}
+  form{display:flex;flex-direction:column;gap:14px}
+  input,textarea,select{
+    background:rgba(0,0,0,.3);border:1px solid var(--border);color:var(--text);
+    padding:15px 18px;border-radius:12px;font-size:15px;font-family:inherit;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+  form .btn{justify-content:center;margin-top:6px}
+  form small{color:#aab2d0;font-size:12px}
+
+  /* Footer */
+  footer{padding:60px 0 40px;border-top:1px solid var(--border);color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot a{color:var(--muted)}
+  .foot a:hover{color:var(--text)}
+  .foot-col h5{color:var(--text);margin-bottom:16px;font-size:15px}
+  .foot-col a{display:block;margin-bottom:10px;font-size:14px}
+  .foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:12px}
+
+  @media(max-width:900px){
+    .grid-3,.media-grid,.cases,.method,.cta-block{grid-template-columns:1fr}
+    .team{grid-template-columns:repeat(2,1fr)}
+    .nav-links{display:none}
+    .burger{display:flex}
+    .metrics{gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">WAVE<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#services">Услуги</a>
+      <a href="#method">Методология</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#team">Команда</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn">Оставить заявку</a>
+      <div class="burger" onclick="document.querySelector('.nav-links').style.display='flex'">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Маркетинговое агентство полного цикла</span>
+    <h1>Строим бренды, которые невозможно не заметить</h1>
+    <p class="lead">Стратегия, исследования и управление кампаниями для среднего и крупного бизнеса. Опираемся на данные и цифры, усиленные креативом и нестандартными решениями.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn">Записаться на диагностику</a>
+      <a href="#cases" class="btn btn-ghost">Смотреть кейсы</a>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="num">7<span>+</span></div><div class="label">лет на рынке</div></div>
+      <div class="metric"><div class="num">350<span>+</span></div><div class="label">реализованных проектов</div></div>
+      <div class="metric"><div class="num">40<span>+</span></div><div class="label">специалистов в команде</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Услуги</div>
+      <h2>Решаем задачи бизнеса комплексно</h2>
+      <p>От стратегии до перформанса — закрываем весь цикл маркетинга под одной крышей.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><div class="ic">◎</div><h3>Стратегия</h3><p>Позиционирование, анализ рынка и конкурентов, дорожная карта роста бренда.</p></div>
+      <div class="card"><div class="ic">⌕</div><h3>Исследования</h3><p>Глубинные интервью, опросы аудитории и аналитика для обоснованных решений.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Перформанс</h3><p>Контекстная и таргетированная реклама с прозрачной отчётностью по KPI.</p></div>
+      <div class="card"><div class="ic">✎</div><h3>Контент и SMM</h3><p>Ведение соцсетей, продакшн видео и подкастов, контент-стратегия.</p></div>
+      <div class="card"><div class="ic">◆</div><h3>Брендинг</h3><p>Айдентика, гайдлайны и визуальная система, которая работает на узнаваемость.</p></div>
+      <div class="card"><div class="ic">⊞</div><h3>Управление</h3><p>Сопровождение проектов, координация подрядчиков и контроль результата.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="block" id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Методология</div>
+      <h2>Три опоры нашего подхода</h2>
+      <p>Каждый проект проходит через выверенный процесс — без хаоса и догадок.</p>
+    </div>
+    <div class="method">
+      <div class="tabs">
+        <button class="tab active" data-tab="0">Стратегия <span class="n">01</span></button>
+        <button class="tab" data-tab="1">Исследования <span class="n">02</span></button>
+        <button class="tab" data-tab="2">Управление <span class="n">03</span></button>
+      </div>
+      <div class="tab-panel" id="panel">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="block" id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Медиа и контент</div>
+      <h2>Делимся экспертизой открыто</h2>
+    </div>
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="play">▶</div>
+        <div><h3>Подкаст «Короче говоря»</h3><p>Разговоры о маркетинге, бизнесе и трендах простым языком.</p></div>
+      </div>
+      <div class="media-card">
+        <div class="play">▶</div>
+        <div><h3>YouTube-канал</h3><p>Разборы кейсов, инструменты и интервью с экспертами индустрии.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="block" id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Кейсы</div>
+      <h2>Результаты, которыми гордимся</h2>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <div class="thumb"><span class="pill">E-commerce</span></div>
+        <div class="body"><h3>Запуск бренда косметики</h3><p>Стратегия выхода на маркетплейсы и федеральные сети.</p>
+          <div class="res"><div><b>×3.4</b><span>рост выручки</span></div><div><b>−28%</b><span>стоимость лида</span></div></div></div>
+      </article>
+      <article class="case">
+        <div class="thumb"><span class="pill">B2B</span></div>
+        <div class="body"><h3>Лидген для IT-компании</h3><p>Перформанс-кампании и контент-маркетинг для B2B-сегмента.</p>
+          <div class="res"><div><b>+210%</b><span>заявок в месяц</span></div><div><b>×2.1</b><span>конверсия сайта</span></div></div></div>
+      </article>
+      <article class="case">
+        <div class="thumb"><span class="pill">Retail</span></div>
+        <div class="body"><h3>Ребрендинг сети</h3><p>Новая айдентика и коммуникационная стратегия.</p>
+          <div class="res"><div><b>+64%</b><span>узнаваемость</span></div><div><b>+38%</b><span>средний чек</span></div></div></div>
+      </article>
+      <article class="case">
+        <div class="thumb"><span class="pill">FoodTech</span></div>
+        <div class="body"><h3>Продвижение сервиса доставки</h3><p>Комплексное продвижение и удержание аудитории.</p>
+          <div class="res"><div><b>×4</b><span>новых клиентов</span></div><div><b>+52%</b><span>повторных заказов</span></div></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="block" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Команда</div>
+      <h2>Люди, которые делают результат</h2>
+    </div>
+    <div class="team">
+      <div class="member"><div class="ph">◔</div><h4>Имя Фамилия</h4><span>CEO, основатель</span></div>
+      <div class="member"><div class="ph">◑</div><h4>Имя Фамилия</h4><span>Директор по стратегии</span></div>
+      <div class="member"><div class="ph">◕</div><h4>Имя Фамилия</h4><span>Head of Performance</span></div>
+      <div class="member"><div class="ph">●</div><h4>Имя Фамилия</h4><span>Креативный директор</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="cta-block">
+      <div>
+        <h2>Записаться на диагностику</h2>
+        <p>Оставьте заявку — проведём бесплатный аудит маркетинга и предложим план роста. Работаем с бизнесом от 1 млн ₽ выручки в месяц.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Спасибо! Мы свяжемся с вами.');">
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="Телефон" required>
+        <input type="email" placeholder="E-mail">
+        <select>
+          <option>Выручка в месяц</option>
+          <option>1–5 млн ₽</option>
+          <option>5–20 млн ₽</option>
+          <option>более 20 млн ₽</option>
+        </select>
+        <button class="btn" type="submit">Отправить заявку</button>
+        <small>Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-col" style="max-width:280px">
+        <div class="logo" style="margin-bottom:16px">WAVE<span>.</span></div>
+        <p>Маркетинговое агентство полного цикла. Стратегия, креатив и данные.</p>
+      </div>
+      <div class="foot-col"><h5>Навигация</h5>
+        <a href="#services">Услуги</a><a href="#method">Методология</a><a href="#cases">Кейсы</a><a href="#team">Команда</a></div>
+      <div class="foot-col"><h5>Соцсети</h5>
+        <a href="#">Telegram</a><a href="#">YouTube</a><a href="#">VK</a><a href="#">Instagram</a></div>
+      <div class="foot-col"><h5>Контакты</h5>
+        <a href="mailto:hello@example.com">hello@example.com</a><a href="tel:+70000000000">+7 (000) 000-00-00</a><a href="#">Москва</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 WAVE. Шаблон для демонстрации.</span>
+      <span>Политика конфиденциальности</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Methodology tabs
+  const data = [
+    {h:"Стратегия", p:"Определяем, куда движется бренд и как туда прийти.", li:["Анализ рынка и конкурентов","Позиционирование и УТП","Дорожная карта на 6–12 месяцев","Метрики и цели"]},
+    {h:"Исследования", p:"Решения на данных, а не на догадках.", li:["Глубинные интервью с аудиторией","Количественные опросы","Анализ пути клиента (CJM)","Тестирование гипотез"]},
+    {h:"Управление", p:"Держим проект под контролем от старта до результата.", li:["Координация команды и подрядчиков","Прозрачная отчётность","Контроль KPI и бюджета","Регулярные синхронизации"]}
+  ];
+  const panel = document.getElementById('panel');
+  function render(i){
+    const d = data[i];
+    panel.innerHTML = `<h3>${d.h}</h3><p>${d.p}</p><ul>${d.li.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  }
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      render(+t.dataset.tab);
+    });
+  });
+  render(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VolleyPro — Школа волейбола</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.x/dist/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg-primary: #0A0A0A;
+      --bg-secondary: #0D0D0D;
+      --card: #111111;
+      --accent: #FFD600;
+      --border: #1A1A1A;
+      --text-muted: #555555;
+      --text-dim: #333333;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .lbl {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .sec { padding: 68px 56px; }
+
+    /* ====== NAV ====== */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 56px;
+      border-bottom: 1px solid #181818;
+    }
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.accent { color: var(--accent); }
+
+    /* ====== SEC-1 HERO ====== */
+    #hero { background: var(--bg-primary); border-bottom: 1px solid #181818; }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 68px 56px 60px;
+    }
+    .hero-left { flex: 0 0 58%; }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+    .hero-title .accent { color: var(--accent); }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 380px;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 12px; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0A0A0A;
+      border: none;
+      padding: 14px 28px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      color: #777;
+      border: 1px solid #2A2A2A;
+      padding: 14px 28px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { color: var(--white); border-color: #444; }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #181818;
+    }
+    .stat-num {
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-num.accent { color: var(--accent); }
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* HERO RIGHT */
+    .hero-right {
+      flex: 0 0 38%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 360px;
+    }
+    .circle-outer {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 1px solid #181818;
+    }
+    .circle-inner {
+      position: absolute;
+      width: 196px;
+      height: 196px;
+      border-radius: 50%;
+      border: 1px solid #1E1E1E;
+    }
+    .ball {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+    .ball::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 2px;
+      background: rgba(0,0,0,0.18);
+      top: 50%;
+      left: -25%;
+      transform: rotate(-15deg);
+    }
+    .ball::after {
+      content: '';
+      position: absolute;
+      height: 150%;
+      width: 2px;
+      background: rgba(0,0,0,0.18);
+      left: 50%;
+      top: -25%;
+    }
+    .hero-tag {
+      position: absolute;
+      padding: 7px 13px;
+      font-size: 11px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-tag.tag-dark {
+      background: #1A1A1A;
+      border: 1px solid #2A2A2A;
+      color: #aaa;
+      top: 24px;
+      right: -10px;
+    }
+    .hero-tag.tag-accent {
+      background: var(--accent);
+      color: #0A0A0A;
+      font-weight: 600;
+      bottom: 60px;
+      left: -10px;
+    }
+
+    /* ====== SEC-2 DIRECTIONS ====== */
+    #directions { background: var(--bg-secondary); border-top: 1px solid #181818; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 44px;
+    }
+    .section-head-desc {
+      max-width: 240px;
+      color: #3A3A3A;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .h2-sec {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .dir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .dir-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .dir-card.accent-card {
+      background: var(--accent);
+      border: none;
+    }
+    .dir-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .dir-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #222;
+      letter-spacing: 2px;
+    }
+    .dir-card.accent-card .dir-num { color: rgba(0,0,0,0.28); }
+    .dir-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .dir-card:not(.accent-card) .dir-icon {
+      border: 1px solid rgba(255,214,0,0.35);
+      background: rgba(255,214,0,0.08);
+      color: var(--accent);
+    }
+    .dir-card.accent-card .dir-icon {
+      background: rgba(0,0,0,0.1);
+      color: #0A0A0A;
+    }
+    .dir-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .dir-card.accent-card .dir-title { color: #0A0A0A; }
+    .dir-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      margin-bottom: 20px;
+      color: #3A3A3A;
+      flex: 1;
+    }
+    .dir-card.accent-card .dir-desc { color: rgba(0,0,0,0.55); }
+    .dir-divider {
+      border: none;
+      border-top: 1px solid #1E1E1E;
+      margin-bottom: 18px;
+    }
+    .dir-card.accent-card .dir-divider { border-color: rgba(0,0,0,0.15); }
+    .dir-feats {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+    .dir-feat {
+      font-size: 12px;
+      color: #3A3A3A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dir-feat .ti { font-size: 13px; color: #2C2C2C; flex-shrink: 0; }
+    .dir-card.accent-card .dir-feat { color: rgba(0,0,0,0.55); }
+    .dir-card.accent-card .dir-feat .ti { color: rgba(0,0,0,0.38); }
+    .dir-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid #1E1E1E;
+    }
+    .dir-card.accent-card .dir-bottom { border-color: rgba(0,0,0,0.15); }
+    .dir-link {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .dir-card.accent-card .dir-link { color: #0A0A0A; }
+    .dir-arrow {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2A2A2A;
+      color: #444;
+      font-size: 14px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .dir-card:not(.accent-card) .dir-arrow:hover { border-color: var(--accent); color: var(--accent); }
+    .dir-card.accent-card .dir-arrow {
+      border-color: rgba(0,0,0,0.2);
+      color: rgba(0,0,0,0.55);
+    }
+
+    /* ====== SEC-3 CASES ====== */
+    #cases { background: var(--bg-primary); border-top: 1px solid #181818; }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .case-photo {
+      height: 160px;
+      background: #141414;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .case-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #1E1E1E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #333;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .badge.accent { background: var(--accent); color: #0A0A0A; }
+    .badge.outline { background: #1A1A1A; border: 1px solid #2A2A2A; color: #888; }
+    .case-body { padding: 20px; }
+    .case-label {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .case-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+    .case-text { font-size: 12px; color: #3A3A3A; line-height: 1.7; }
+
+    .btn-outline-sm {
+      background: transparent;
+      border: 1px solid #2A2A2A;
+      color: #555;
+      padding: 10px 20px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    /* ====== SEC-4 PRICING ====== */
+    #pricing { background: var(--bg-secondary); border-top: 1px solid #181818; }
+
+    .pricing-head { text-align: center; margin-bottom: 48px; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      position: relative;
+    }
+    .price-card.featured { background: var(--accent); border: none; }
+    .price-card.master { border-color: var(--accent); }
+
+    .price-tier {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .price-card:not(.featured) .price-tier { color: #444; }
+    .price-card.featured .price-tier { color: rgba(255,255,255,0.55); }
+
+    .price-amount { font-size: 44px; font-weight: 900; margin-bottom: 4px; }
+    .price-card.featured .price-amount { color: var(--white); }
+
+    .price-currency { font-size: 18px; font-weight: 400; }
+    .price-card:not(.featured) .price-currency { color: var(--text-dim); }
+    .price-card.featured .price-currency { color: rgba(255,255,255,0.5); }
+
+    .price-period {
+      font-size: 11px;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid;
+    }
+    .price-card:not(.featured) .price-period { color: var(--text-dim); border-color: var(--border); }
+    .price-card.featured .price-period { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .price-feature {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .price-card:not(.featured) .price-feature { color: var(--text-muted); }
+    .price-card.featured .price-feature { color: rgba(255,255,255,0.9); }
+    .price-feature.dim { color: #2A2A2A !important; }
+    .price-feature .ti { font-size: 14px; flex-shrink: 0; }
+
+    .price-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .price-btn:hover { opacity: 0.88; }
+    .price-btn.btn-ghost { background: transparent; border: 1px solid #222; color: #444; }
+    .price-btn.btn-white { background: var(--white); color: var(--accent); }
+    .price-btn.btn-ghost-accent { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+
+    .popular-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ====== SEC-5 DOCS + FORM ====== */
+    #contact-form { background: var(--bg-primary); border-top: 1px solid #181818; }
+
+    .docs-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .h2-sec-sm {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .docs-desc { color: #3A3A3A; font-size: 13px; line-height: 1.8; margin-bottom: 28px; }
+
+    .doc-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .doc-icon {
+      width: 36px;
+      height: 44px;
+      background: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .doc-row:first-of-type .doc-icon { border: 1px solid rgba(255,214,0,0.35); color: var(--accent); }
+    .doc-row:not(:first-of-type) .doc-icon { border: 1px solid #222; color: #555; }
+    .doc-title { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+    .doc-sub { font-size: 11px; color: var(--text-dim); }
+    .doc-dl { margin-left: auto; color: var(--accent); font-size: 11px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #666;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s, color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent);
+      color: var(--white);
+    }
+    .form-textarea {
+      height: 96px;
+      resize: none;
+      border-color: var(--accent);
+      color: #555;
+    }
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '↓';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      pointer-events: none;
+      font-size: 12px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { margin-bottom: 14px; }
+
+    .form-success {
+      display: none;
+      background: rgba(255,214,0,0.08);
+      border: 1px solid var(--accent);
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-top: 14px;
+    }
+
+    /* ====== SEC-6 CONTACTS + FOOTER ====== */
+    #contacts { background: var(--bg-secondary); border-top: 1px solid #181818; }
+
+    .contacts-inner {
+      padding: 60px 56px;
+      text-align: center;
+      border-bottom: 1px solid #181818;
+    }
+    .contacts-btns {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    .contact-btn {
+      padding: 16px 36px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .contact-btn:hover { opacity: 0.88; }
+    .contact-btn.wa { background: #25D366; color: var(--white); }
+    .contact-btn.tg { background: #229ED9; color: var(--white); }
+    .contact-btn.ph { background: var(--card); border: 1px solid #2A2A2A; color: #666; }
+    .contact-btn .ti { font-size: 20px; }
+
+    .footer {
+      padding: 32px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo { font-size: 15px; font-weight: 900; letter-spacing: 2px; color: #2A2A2A; }
+    .footer-logo span { color: var(--accent); opacity: 0.45; }
+    .footer-addr { font-size: 11px; color: #222; text-align: center; line-height: 1.6; }
+    .footer-copy { font-size: 11px; color: #222; }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+
+      .sec { padding: 48px 24px; }
+
+      .hero-inner { flex-direction: column; padding: 48px 24px; gap: 40px; }
+      .hero-left { flex: none; width: 100%; }
+      .hero-right { flex: none; width: 100%; height: 260px; }
+      .hero-title { font-size: 36px; letter-spacing: -1px; }
+      .circle-outer { width: 200px; height: 200px; }
+      .circle-inner { width: 152px; height: 152px; }
+      .ball { width: 100px; height: 100px; }
+      .hero-tag.tag-dark { right: 10px; top: 10px; }
+      .hero-tag.tag-accent { left: 10px; bottom: 30px; }
+      .hero-btns { flex-direction: column; }
+      .hero-stats { gap: 28px; }
+
+      .section-head { flex-direction: column; gap: 16px; align-items: flex-start; }
+
+      .dir-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .docs-form-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .h2-sec { font-size: 32px; }
+      .h2-sec-sm { font-size: 28px; }
+
+      .contacts-inner { padding: 48px 24px; }
+      .contacts-btns { flex-direction: column; align-items: center; }
+      .contact-btn { width: 100%; max-width: 300px; justify-content: center; }
+
+      .footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SEC-1: HERO -->
+<section id="hero">
+  <nav class="nav">
+    <a href="#hero" class="nav-logo">VOLLEY<span>PRO</span></a>
+    <ul class="nav-links">
+      <li><a href="#directions">Направления</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#contact-form">Документы</a></li>
+      <li><a href="#contacts" class="accent">Контакт</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Профессиональная школа волейбола</p>
+      <h1 class="hero-title">
+        РАЗВИВАЙ<br>
+        ИГРУ НА<br>
+        <span class="accent">НОВЫЙ</span><br>
+        УРОВЕНЬ
+      </h1>
+      <p class="hero-desc">
+        Индивидуальные и групповые тренировки для детей и взрослых. Сертифицированные тренеры с опытом от 10 лет.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">ЗАПИСАТЬСЯ</button>
+        <button class="btn-outline" onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})">СМОТРЕТЬ КЕЙСЫ</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num accent">150+</div>
+          <div class="stat-label">Учеников</div>
+        </div>
+        <div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">Тренеров</div>
+        </div>
+        <div>
+          <div class="stat-num">8</div>
+          <div class="stat-label">Лет опыта</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="circle-outer"></div>
+      <div class="circle-inner"></div>
+      <div class="ball"></div>
+      <div class="hero-tag tag-dark">
+        <i class="ti ti-trophy" aria-hidden="true" style="color:var(--accent);"></i>
+        Чемпионы города 2024
+      </div>
+      <div class="hero-tag tag-accent">
+        Набор открыт
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC-2: DIRECTIONS -->
+<section id="directions" class="sec">
+  <div class="section-head">
+    <div>
+      <span class="lbl">01 / Направления</span>
+      <h2 class="h2-sec">ПРАКТИКИ</h2>
+    </div>
+    <p class="section-head-desc">Выберите формат тренировок, который подходит именно вам</p>
+  </div>
+
+  <div class="dir-grid">
+
+    <div class="dir-card">
+      <div class="dir-card-top">
+        <div class="dir-icon"><i class="ti ti-user" aria-hidden="true"></i></div>
+        <span class="dir-num">01</span>
+      </div>
+      <div class="dir-title">Индивидуальные тренировки</div>
+      <p class="dir-desc">Персональный тренер, программа под ваши цели и уровень, максимальный прогресс за короткий срок</p>
+      <hr class="dir-divider">
+      <div class="dir-feats">
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Персональный план тренировок</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Гибкий график, любое время</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Подходит для любого уровня</div>
+      </div>
+      <div class="dir-bottom">
+        <a href="#contact-form" class="dir-link">от 2 500 ₽ / час</a>
+        <a href="#contact-form" class="dir-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="dir-card accent-card">
+      <div class="dir-card-top">
+        <div class="dir-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <span class="dir-num">02</span>
+      </div>
+      <div class="dir-title">Групповые тренировки</div>
+      <p class="dir-desc">Команды 6–12 человек, игровая практика, разбор тактики и командное взаимодействие на площадке</p>
+      <hr class="dir-divider">
+      <div class="dir-feats">
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Реальные игровые ситуации</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Разбор тактики и ошибок</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Атмосфера команды</div>
+      </div>
+      <div class="dir-bottom">
+        <a href="#contact-form" class="dir-link">от 800 ₽ / занятие</a>
+        <a href="#contact-form" class="dir-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="dir-card">
+      <div class="dir-card-top">
+        <div class="dir-icon"><i class="ti ti-star" aria-hidden="true"></i></div>
+        <span class="dir-num">03</span>
+      </div>
+      <div class="dir-title">Детская секция</div>
+      <p class="dir-desc">Для детей 6–16 лет. Игровое обучение через практику, физическое развитие и соревновательный дух</p>
+      <hr class="dir-divider">
+      <div class="dir-feats">
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Возраст от 6 до 16 лет</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Малые группы до 8 человек</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Участие в детских турнирах</div>
+      </div>
+      <div class="dir-bottom">
+        <a href="#contact-form" class="dir-link">от 600 ₽ / занятие</a>
+        <a href="#contact-form" class="dir-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="dir-card">
+      <div class="dir-card-top">
+        <div class="dir-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+        <span class="dir-num">04</span>
+      </div>
+      <div class="dir-title">Сборы и турниры</div>
+      <p class="dir-desc">Участие в городских и региональных турнирах, тренировочные выезды и летние спортивные лагеря</p>
+      <hr class="dir-divider">
+      <div class="dir-feats">
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Городские и региональные турниры</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Выездные тренировочные сборы</div>
+        <div class="dir-feat"><i class="ti ti-check" aria-hidden="true"></i>Летние спортивные лагеря</div>
+      </div>
+      <div class="dir-bottom">
+        <a href="#contact-form" class="dir-link">уточняйте цену</a>
+        <a href="#contact-form" class="dir-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEC-3: CASES -->
+<section id="cases" class="sec">
+  <div class="section-head">
+    <div>
+      <span class="lbl">02 / Кейсы</span>
+      <h2 class="h2-sec">ИСТОРИИ<br>УСПЕХА</h2>
+    </div>
+    <button class="btn-outline-sm">Все кейсы →</button>
+  </div>
+
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-photo">
+        <div class="case-avatar"><i class="ti ti-user" aria-hidden="true"></i></div>
+        <span class="badge accent">Топ игрок</span>
+      </div>
+      <div class="case-body">
+        <div class="case-label">Анна К. / 16 лет</div>
+        <div class="case-title">Попала в сборную города за 8 месяцев тренировок</div>
+        <p class="case-text">«Начала с нуля, сейчас играю на городских соревнованиях. Тренер нашёл мои сильные стороны.»</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-photo">
+        <div class="case-avatar"><i class="ti ti-user" aria-hidden="true"></i></div>
+        <span class="badge outline">Взрослый</span>
+      </div>
+      <div class="case-body">
+        <div class="case-label">Михаил С. / 34 года</div>
+        <div class="case-title">С нуля до первых соревнований за 4 месяца</div>
+        <p class="case-text">«Думал, что уже поздно начинать. Оказалось — самое время. Теперь в корпоративной лиге.»</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-photo">
+        <div class="case-avatar"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <span class="badge accent">Юниоры</span>
+      </div>
+      <div class="case-body">
+        <div class="case-label">Команда / 9–12 лет</div>
+        <div class="case-title">Победа в региональном турнире среди юниоров 2024</div>
+        <p class="case-text">«Дети стали увереннее, нашли команду. Победа — результат полугода совместной работы.»</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC-4: PRICING -->
+<section id="pricing" class="sec">
+  <div class="pricing-head">
+    <span class="lbl">03 / Стоимость</span>
+    <h2 class="h2-sec">ЦЕНЫ<br>НА ЗАНЯТИЯ</h2>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tier">Старт</div>
+      <div class="price-amount">4 800<span class="price-currency"> ₽</span></div>
+      <div class="price-period">/ 4 занятия в месяц</div>
+      <ul class="price-features">
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Групповые тренировки</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Базовая техника</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Онлайн-поддержка</li>
+        <li class="price-feature dim"><i class="ti ti-minus" aria-hidden="true"></i>Видеоразбор игры</li>
+        <li class="price-feature dim"><i class="ti ti-minus" aria-hidden="true"></i>Персональный план</li>
+      </ul>
+      <button class="price-btn btn-ghost" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Выбрать</button>
+    </div>
+
+    <div class="price-card featured">
+      <div class="popular-badge">Популярное</div>
+      <div class="price-tier">Прогресс</div>
+      <div class="price-amount">9 600<span class="price-currency"> ₽</span></div>
+      <div class="price-period">/ 8 занятий в месяц</div>
+      <ul class="price-features">
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true"></i>Групповые тренировки</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true"></i>Разбор игровых ошибок</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true"></i>Видеоанализ игры</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true"></i>Персональный план</li>
+        <li class="price-feature" style="color:rgba(255,255,255,0.38);"><i class="ti ti-minus" aria-hidden="true"></i>Инд. занятия</li>
+      </ul>
+      <button class="price-btn btn-white" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Выбрать</button>
+    </div>
+
+    <div class="price-card master">
+      <div class="price-tier">Мастер</div>
+      <div class="price-amount">18 000<span class="price-currency"> ₽</span></div>
+      <div class="price-period">/ 8 инд. занятий</div>
+      <ul class="price-features">
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Инд. тренировки</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Персональная программа</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Видеоанализ и разбор</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>Участие в турнирах</li>
+        <li class="price-feature"><i class="ti ti-check" aria-hidden="true" style="color:var(--accent);"></i>24/7 поддержка тренера</li>
+      </ul>
+      <button class="price-btn btn-ghost-accent" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Выбрать</button>
+    </div>
+  </div>
+</section>
+
+<!-- SEC-5: DOCS + FORM -->
+<section id="contact-form" class="sec">
+  <div class="docs-form-grid">
+
+    <div>
+      <span class="lbl">04 / Документы</span>
+      <h2 class="h2-sec-sm">ЛИЦЕНЗИИ<br>И СЕРТИФИКАТЫ</h2>
+      <p class="docs-desc">Все тренеры сертифицированы. Работаем в соответствии с требованиями Минспорта РФ.</p>
+
+      <div class="doc-row">
+        <div class="doc-icon"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+        <div>
+          <div class="doc-title">Лицензия на образовательную деятельность</div>
+          <div class="doc-sub">№ Л035-01298 · Минобр РФ · 2023</div>
+        </div>
+        <span class="doc-dl">PDF ↓</span>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+        <div>
+          <div class="doc-title">Аккредитация ФВС России</div>
+          <div class="doc-sub">Федерация волейбола · 2024–2026</div>
+        </div>
+        <span class="doc-dl">PDF ↓</span>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div>
+          <div class="doc-title">Тренер 1-й категории</div>
+          <div class="doc-sub">РГУФКСМиТ · 12 тренеров</div>
+        </div>
+        <span class="doc-dl">PDF ↓</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="lbl">05 / Заявка</span>
+      <h2 class="h2-sec-sm">ОПИШИТЕ<br>ВАШУ СИТУАЦИЮ</h2>
+      <p class="docs-desc">Расскажите о своём уровне и целях — мы подберём оптимальный формат.</p>
+
+      <form id="leadForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Имя</label>
+            <input class="form-input" type="text" id="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Телефон</label>
+            <input class="form-input" type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="level">Ваш уровень</label>
+          <div class="form-select-wrap">
+            <select class="form-input form-select" id="level">
+              <option value="" disabled selected>Выберите уровень</option>
+              <option>Новичок — никогда не играл(а)</option>
+              <option>Начинающий — знаю базу</option>
+              <option>Любитель — играю в команде</option>
+              <option>Продвинутый — соревнования</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Опишите ситуацию</label>
+          <textarea class="form-input form-textarea" id="message" placeholder="Расскажите о целях, опыте, возрасте..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%;padding:15px;font-size:12px;letter-spacing:2px;">
+          ОТПРАВИТЬ ЗАЯВКУ →
+        </button>
+        <div class="form-success" id="formSuccess">
+          <i class="ti ti-check" aria-hidden="true" style="margin-right:8px;"></i>Заявка отправлена! Свяжемся с вами в течение 5 минут.
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEC-6: CONTACTS + FOOTER -->
+<section id="contacts">
+  <div class="contacts-inner">
+    <span class="lbl">06 / Быстрая связь</span>
+    <h2 class="h2-sec">СВЯЖИТЕСЬ<br>ПРЯМО СЕЙЧАС</h2>
+    <p style="color:#333;font-size:13px;margin-top:12px;">Ответим за 5 минут в рабочее время</p>
+
+    <div class="contacts-btns">
+      <a href="https://wa.me/79991234567" class="contact-btn wa" target="_blank" rel="noopener">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+        WhatsApp
+      </a>
+      <a href="https://t.me/volleypro" class="contact-btn tg" target="_blank" rel="noopener">
+        <i class="ti ti-brand-telegram" aria-hidden="true"></i>
+        Telegram
+      </a>
+      <a href="tel:+79991234567" class="contact-btn ph">
+        <i class="ti ti-phone" aria-hidden="true"></i>
+        +7 (999) 123-45-67
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">VOLLEY<span>PRO</span></div>
+    <div class="footer-addr">Москва, ул. Спортивная, 12 &nbsp;·&nbsp; пн–пт 9:00–21:00, сб–вс 10:00–18:00</div>
+    <div class="footer-copy">© 2025 VolleyPro</div>
+  </footer>
+</section>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    if (!name || !phone) {
+      if (!name) document.getElementById('name').focus();
+      else document.getElementById('phone').focus();
+      return;
+    }
+    this.querySelectorAll('input, select, textarea, button[type="submit"]').forEach(function(el) {
+      el.disabled = true;
+    });
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

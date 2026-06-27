@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NORDA — Modular Homes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-soft: #ece7dc;
+    --ink: #1c1b17;
+    --ink-soft: #5b574d;
+    --accent: #3a4a3f;
+    --accent-2: #b9744f;
+    --line: rgba(28, 27, 23, 0.12);
+    --card: #fffdf8;
+    --radius: 22px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Manrope", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: "Fraunces", Georgia, serif; }
+
+  .wrap { width: min(1240px, 92vw); margin: 0 auto; }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { display: block; max-width: 100%; }
+
+  /* ---------- NAV ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(244, 241, 234, 0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .logo {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent-2);
+    display: inline-block;
+  }
+  .nav-links { display: flex; gap: 38px; font-size: 15px; font-weight: 500; }
+  .nav-links a { color: var(--ink-soft); transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform .25s, background .25s, color .25s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-dark { background: var(--ink); color: var(--bg); }
+  .btn-dark:hover { transform: translateY(-2px); background: var(--accent); }
+  .btn-outline { border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+  .btn-outline:hover { background: var(--ink); color: var(--bg); }
+  .menu-toggle { display: none; background: none; border: none; font-size: 26px; cursor: pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 64px 0 40px; }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-2);
+    margin-bottom: 22px;
+  }
+  h1.hero-title {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(44px, 7vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  h1.hero-title em { font-style: italic; color: var(--accent-2); }
+  .hero-desc { max-width: 340px; color: var(--ink-soft); font-size: 16px; }
+  .hero-desc .btn { margin-top: 24px; }
+
+  .hero-visual {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: clamp(340px, 56vh, 600px);
+  }
+  .hero-visual img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.02);
+  }
+  .hero-card {
+    position: absolute;
+    left: 28px; bottom: 28px;
+    background: rgba(255, 253, 248, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 20px 24px;
+    max-width: 300px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  }
+  .hero-card h4 { font-size: 16px; margin-bottom: 4px; }
+  .hero-card p { font-size: 13.5px; color: var(--ink-soft); }
+  .hero-badge {
+    position: absolute;
+    right: 28px; top: 28px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+    margin-top: 56px;
+  }
+  .stat .num {
+    font-family: "Fraunces", serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lbl { color: var(--ink-soft); font-size: 14px; margin-top: 8px; }
+
+  /* ---------- SECTION HEAD ---------- */
+  section { padding: 90px 0; }
+  .sec-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .sec-head h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4.4vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    max-width: 640px;
+  }
+  .sec-head p { color: var(--ink-soft); max-width: 360px; font-size: 15.5px; }
+
+  /* ---------- MODELS ---------- */
+  .models-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .model {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .model:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,.1); }
+  .model .ph { height: 240px; overflow: hidden; }
+  .model .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .model:hover .ph img { transform: scale(1.06); }
+  .model-body { padding: 24px; }
+  .model-body .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .model-body h3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 24px; }
+  .model-body .price { font-weight: 700; color: var(--accent); }
+  .model-meta { display: flex; gap: 18px; margin: 16px 0 4px; color: var(--ink-soft); font-size: 14px; flex-wrap: wrap; }
+  .model-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ---------- FEATURES ---------- */
+  .features { background: var(--accent); color: #f4f1ea; border-radius: 40px; }
+  .features .wrap { padding: 30px 0; }
+  .features .eyebrow { color: var(--accent-2); }
+  .features h2 { color: #f7f4ec; }
+  .features .sec-head p { color: rgba(244,241,234,.7); }
+  .feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .feat {
+    border: 1px solid rgba(244,241,234,.16);
+    border-radius: 18px;
+    padding: 28px 24px;
+    transition: background .3s;
+  }
+  .feat:hover { background: rgba(244,241,234,.06); }
+  .feat .ic {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: var(--accent-2);
+    display: grid; place-items: center;
+    margin-bottom: 18px; font-size: 22px;
+  }
+  .feat h4 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+  .feat p { font-size: 14px; color: rgba(244,241,234,.72); }
+
+  /* ---------- PROCESS ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { padding-top: 26px; border-top: 2px solid var(--ink); }
+  .step .n { font-family: "Fraunces", serif; font-size: 20px; color: var(--accent-2); margin-bottom: 14px; }
+  .step h4 { font-size: 19px; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: 14.5px; }
+
+  /* ---------- SHOWCASE / SPLIT ---------- */
+  .split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px; align-items: center; }
+  .split .visual { border-radius: var(--radius); overflow: hidden; height: 480px; }
+  .split .visual img { width: 100%; height: 100%; object-fit: cover; }
+  .split h2 { font-family: "Fraunces", serif; font-weight: 500; font-size: clamp(30px, 4vw, 50px); line-height: 1.04; letter-spacing: -.015em; margin-bottom: 22px; }
+  .split p { color: var(--ink-soft); margin-bottom: 22px; }
+  .check-list { list-style: none; display: grid; gap: 14px; margin-bottom: 30px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; }
+  .check-list li::before { content: "✓"; color: var(--accent-2); font-weight: 800; }
+
+  /* ---------- CTA ---------- */
+  .cta-band {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 40px;
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .cta-band h2 { font-family: "Fraunces", serif; font-weight: 500; font-size: clamp(32px, 5vw, 64px); line-height: 1.02; margin-bottom: 20px; }
+  .cta-band p { color: rgba(244,241,234,.72); max-width: 480px; margin: 0 auto 34px; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-band .btn-dark { background: var(--accent-2); }
+  .cta-band .btn-dark:hover { background: #c9805a; }
+  .cta-band .btn-outline { border-color: rgba(244,241,234,.4); color: var(--bg); }
+  .cta-band .btn-outline:hover { background: var(--bg); color: var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 70px 0 40px; }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid var(--line); }
+  .foot-grid p { color: var(--ink-soft); font-size: 14.5px; max-width: 280px; margin-top: 16px; }
+  .foot-col h5 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-soft); margin-bottom: 18px; }
+  .foot-col a { display: block; margin-bottom: 11px; font-size: 15px; color: var(--ink); opacity: .8; transition: opacity .2s; }
+  .foot-col a:hover { opacity: 1; }
+  .foot-bottom { display: flex; justify-content: space-between; padding-top: 26px; color: var(--ink-soft); font-size: 13.5px; flex-wrap: wrap; gap: 10px; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px) {
+    .hero-top { flex-direction: column; align-items: flex-start; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .models-grid { grid-template-columns: repeat(2, 1fr); }
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .split { grid-template-columns: 1fr; }
+    .split .visual { height: 340px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav-links, nav .btn { display: none; }
+    .menu-toggle { display: block; }
+    .models-grid, .feat-grid, .steps, .stats { grid-template-columns: 1fr; }
+    .cta-band { padding: 56px 24px; }
+    .foot-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="dot"></span> NORDA</div>
+      <div class="nav-links">
+        <a href="#models">Модели</a>
+        <a href="#features">Преимущества</a>
+        <a href="#process">Процесс</a>
+        <a href="#about">О нас</a>
+      </div>
+      <a href="#cta" class="btn btn-dark">Получить расчёт →</a>
+      <button class="menu-toggle">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top reveal">
+      <div>
+        <div class="eyebrow">Модульные дома под ключ</div>
+        <h1 class="hero-title">Дом, который<br/>собирается<br/><em>за недели,</em> не годы</h1>
+      </div>
+      <div class="hero-desc">
+        <p>Готовые модульные дома с заводским качеством, энергоэффективностью и архитектурой, продуманной до миллиметра.</p>
+        <a href="#models" class="btn btn-outline">Смотреть модели</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Модульный дом" />
+      <span class="hero-badge">● Доступно к заселению</span>
+      <div class="hero-card">
+        <h4>Модель «Fjord 96»</h4>
+        <p>96 м² · 2 спальни · доставка и монтаж 6 недель</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="num">320+</div><div class="lbl">Сданных домов</div></div>
+      <div class="stat reveal"><div class="num">6 нед.</div><div class="lbl">Средний срок монтажа</div></div>
+      <div class="stat reveal"><div class="num">A++</div><div class="lbl">Класс энергоэффективности</div></div>
+      <div class="stat reveal"><div class="num">25 лет</div><div class="lbl">Гарантия на конструкцию</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELS -->
+<section id="models">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Модельный ряд для любого участка</h2>
+      <p>Каждый дом проектируется на заводе и поставляется готовым к жизни — от фундамента до отделки.</p>
+    </div>
+    <div class="models-grid">
+      <div class="model reveal">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="model-body">
+          <div class="row"><h3>Fjord 96</h3><span class="price">от 8,9 млн ₽</span></div>
+          <div class="model-meta"><span>◳ 96 м²</span><span>⌂ 2 спальни</span><span>◰ 1 этаж</span></div>
+        </div>
+      </div>
+      <div class="model reveal">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="model-body">
+          <div class="row"><h3>Pine 128</h3><span class="price">от 12,4 млн ₽</span></div>
+          <div class="model-meta"><span>◳ 128 м²</span><span>⌂ 3 спальни</span><span>◰ 2 этажа</span></div>
+        </div>
+      </div>
+      <div class="model reveal">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" alt=""></div>
+        <div class="model-body">
+          <div class="row"><h3>Cliff 72</h3><span class="price">от 6,5 млн ₽</span></div>
+          <div class="model-meta"><span>◳ 72 м²</span><span>⌂ 1 спальня</span><span>◰ студия</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Почему NORDA</div>
+          <h2>Заводское качество в каждой детали</h2>
+        </div>
+        <p>Мы контролируем весь цикл — от инженерного расчёта до ключей в вашей руке.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal"><div class="ic">⚡</div><h4>Энергоэффективность</h4><p>Тёплый контур и рекуперация воздуха снижают счета до 60%.</p></div>
+        <div class="feat reveal"><div class="ic">⌚</div><h4>Быстрый монтаж</h4><p>Готовые модули собираются на участке за считанные недели.</p></div>
+        <div class="feat reveal"><div class="ic">✦</div><h4>Premium-отделка</h4><p>Натуральные материалы и панорамное остекление в базе.</p></div>
+        <div class="feat reveal"><div class="ic">♺</div><h4>Эко-материалы</h4><p>Древесина с сертификацией FSC и низкий углеродный след.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Путь до новоселья — четыре шага</h2>
+      <p>Прозрачный процесс с фиксированной сметой и сроками в договоре.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h4>Выбор модели</h4><p>Подбираем планировку под участок и образ жизни.</p></div>
+      <div class="step reveal"><div class="n">02</div><h4>Проект и смета</h4><p>Фиксируем стоимость и сроки — без скрытых платежей.</p></div>
+      <div class="step reveal"><div class="n">03</div><h4>Производство</h4><p>Собираем дом на заводе под контролем качества.</p></div>
+      <div class="step reveal"><div class="n">04</div><h4>Монтаж и ключи</h4><p>Доставляем, монтируем и передаём готовый дом.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT / ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="visual reveal"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1100&q=80" alt=""></div>
+      <div class="reveal">
+        <h2>Архитектура, которая работает на вас</h2>
+        <p>Мы соединяем скандинавский минимализм с инженерной точностью, чтобы дом был не только красивым, но и предельно практичным.</p>
+        <ul class="check-list">
+          <li>Свободные планировки с возможностью расширения модулями</li>
+          <li>Панорамные окна в пол и максимум естественного света</li>
+          <li>Умный дом и автономные инженерные решения в базе</li>
+          <li>Установка на любой тип фундамента и рельеф</li>
+        </ul>
+        <a href="#cta" class="btn btn-dark">Обсудить проект →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Начните строить уже сегодня</h2>
+      <p>Оставьте заявку — рассчитаем стоимость вашего дома и подберём модель под участок в течение дня.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-dark">Получить расчёт →</a>
+        <a href="#models" class="btn btn-outline">Скачать каталог</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="dot"></span> NORDA</div>
+        <p>Модульные дома под ключ. Проектируем, производим и монтируем дома с заводским качеством по всей стране.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Навигация</h5>
+        <a href="#models">Модели</a>
+        <a href="#features">Преимущества</a>
+        <a href="#process">Процесс</a>
+        <a href="#about">О нас</a>
+      </div>
+      <div class="foot-col">
+        <h5>Контакты</h5>
+        <a href="tel:+70000000000">+7 000 000-00-00</a>
+        <a href="mailto:hello@norda.homes">hello@norda.homes</a>
+        <a href="#">Москва, Дизайн-завод</a>
+      </div>
+      <div class="foot-col">
+        <h5>Соцсети</h5>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NORDA Modular Homes</span>
+      <span>Политика конфиденциальности · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 4) * 70 + "ms";
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

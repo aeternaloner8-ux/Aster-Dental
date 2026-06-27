@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Контакты — Aster Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="ref-page">
+<header id="hdr" class="ref-header">
+  <div class="ref-wrap ref-nav">
+    <a class="ref-brand" href="index.html"><img src="assets/aster-mark.svg" alt="" /><span>Международная стоматологическая клиника Aster Dental</span></a>
+    <nav class="ref-menu" aria-label="Основная навигация">
+      <a href="index.html#programs">Популярное</a>
+      <a href="portfolio.html">Услуги</a>
+      <a href="index.html#doctors">Врачи</a>
+      <a href="portfolio.html">Прайс</a>
+      <a href="process.html">Вопросы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <a class="ref-address" href="contacts.html">г. Москва<br>Чистопрудный б-р, 12</a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Открыть меню">☰</button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mnav">
+  <button class="close" id="mnavClose" aria-label="Закрыть меню">×</button>
+  <a href="index.html">Главная</a>
+  <a href="about.html">Клиника</a>
+  <a href="portfolio.html">Услуги</a>
+  <a href="process.html">Лечение</a>
+  <a href="reviews.html">Отзывы</a>
+  <a href="contacts.html">Контакты</a>
+</div>
+
+<main>
+  <section class="contact-hero">
+    <div class="ref-wrap contact-hero-grid">
+      <span class="ref-chip">Контакты</span>
+      <div>
+        <h1>Запись на прием и расположение</h1>
+        <p>Клиника находится у Чистых прудов. Подберем врача, время и подскажем, как подготовиться к первому визиту.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-shell ref-wrap">
+    <div class="contact-map-card reveal">
+      <div class="contact-map-top">
+        <div>
+          <span>Адрес клиники</span>
+          <h2>Москва, Чистопрудный бульвар, 12</h2>
+        </div>
+        <a class="ref-btn" href="https://yandex.ru/maps/?text=Москва%20Чистопрудный%20бульвар%2012">Построить маршрут ↗</a>
+      </div>
+      <div class="contact-map-visual" aria-label="Схема расположения клиники">
+        <div class="map-street street-a"></div>
+        <div class="map-street street-b"></div>
+        <div class="map-street street-c"></div>
+        <div class="map-block block-a"></div>
+        <div class="map-block block-b"></div>
+        <div class="map-block block-c"></div>
+        <div class="map-pin-card"><img src="assets/aster-mark.svg" alt="" /><span>г. Москва<br><b>Чистопрудный б-р, 12</b></span></div>
+      </div>
+      <div class="contact-details">
+        <div><span>График</span><b>Пн-Сб: 09:00 - 21:00</b></div>
+        <div><span>Телефон</span><b><a href="tel:+74951234567">+7 495 123-45-67</a></b></div>
+        <div><span>E-mail</span><b><a href="mailto:hello@aster.dental">hello@aster.dental</a></b></div>
+      </div>
+    </div>
+
+    <form id="leadForm" class="contact-form-card reveal">
+      <span class="ref-chip">Запись</span>
+      <h2>Оставьте заявку</h2>
+      <p>Администратор перезвонит и предложит удобное время.</p>
+      <div class="field"><label for="name">Имя</label><input id="name" name="name" type="text" placeholder="Как к вам обращаться" required /></div>
+      <div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required /></div>
+      <div class="field"><label for="service">Направление</label><select id="service" name="service"><option>Первичная консультация</option><option>Боль или срочный прием</option><option>Имплантация</option><option>Ортодонтия</option><option>Эстетика улыбки</option></select></div>
+      <button class="ref-btn" type="submit">Записаться на прием ↗</button>
+      <div id="formMsg" class="form-msg">Спасибо! Заявка принята. Мы свяжемся с вами в ближайшее время.</div>
+    </form>
+  </section>
+</main>
+
+<footer class="ref-footer">
+  <div class="ref-wrap ref-footer-grid">
+    <a href="#">Политика конфиденциальности<br>и защиты персональных данных</a>
+    <a href="#">Лицензия на осуществление<br>медицинской деятельности</a>
+    <a class="ref-footer-btn" href="contacts.html">Записаться на прием ↗</a>
+  </div>
+  <div class="ref-wrap ref-copy">© 2026 Aster Dental. Все права защищены.</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

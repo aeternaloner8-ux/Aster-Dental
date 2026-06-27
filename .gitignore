@@ -4,3 +4,4 @@ expenses.db
 bot.log
 __pycache__/
 *.pyc
+leads.db

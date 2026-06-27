@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ВЕЛОРА — Создаём дом</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --black:#070605;
+    --black-2:#0d0b0a;
+    --orange:#ff4d12;
+    --orange-soft:#ff6a33;
+    --rust:#b5421f;
+    --rust-2:#9c3817;
+    --cream:#f4efe9;
+    --white:#ffffff;
+    --muted:rgba(255,255,255,.62);
+    --line:rgba(255,255,255,.14);
+    --glass:rgba(255,255,255,.10);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    background:var(--black);
+    color:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--orange);color:#fff}
+
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:var(--black)}
+  ::-webkit-scrollbar-thumb{background:#2a2622;border-radius:20px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--orange)}
+
+  .wrap{width:min(1320px,92vw);margin:0 auto}
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.26em;
+    font-size:12px;
+    font-weight:600;
+    color:var(--orange);
+  }
+
+  /* ---------------- HEADER ---------------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:background .35s ease, backdrop-filter .35s ease, border-color .35s;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(7,6,5,.72);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;font-size:19px}
+  .brand svg{width:22px;height:22px}
+  .nav-pill{
+    display:flex;align-items:center;gap:4px;
+    background:var(--glass);
+    border:1px solid var(--line);
+    backdrop-filter:blur(10px);
+    border-radius:100px;padding:5px;
+  }
+  .nav-pill a{
+    padding:9px 18px;border-radius:100px;font-size:14px;font-weight:500;color:rgba(255,255,255,.85);
+    transition:background .25s,color .25s;
+  }
+  .nav-pill a:hover{background:rgba(255,255,255,.12);color:#fff}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .ic-btn{
+    width:42px;height:42px;border-radius:50%;
+    border:1px solid var(--line);background:var(--glass);
+    display:grid;place-items:center;transition:background .25s,transform .25s;
+  }
+  .ic-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+  .ic-btn svg{width:18px;height:18px}
+  .consult{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:#111;border-radius:100px;
+    padding:7px 8px 7px 20px;font-weight:600;font-size:14px;
+    transition:transform .25s;
+  }
+  .consult:hover{transform:translateY(-2px)}
+  .consult .arrow{
+    width:32px;height:32px;border-radius:50%;background:#111;color:#fff;
+    display:grid;place-items:center;
+  }
+  .consult .arrow svg{width:15px;height:15px}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+
+  /* ---------------- HERO ---------------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(255,128,45,.30) 0%, rgba(20,12,8,.15) 35%, rgba(7,6,5,.55) 75%, rgba(7,6,5,.95) 100%),
+      radial-gradient(120% 80% at 80% 10%, rgba(255,150,70,.35), transparent 55%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:64px}
+  .hero-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+  h1.headline{
+    font-weight:600;
+    font-size:clamp(58px,14vw,220px);
+    line-height:.96;
+    letter-spacing:-.03em;
+    color:#fff;
+    text-transform:uppercase;
+    mix-blend-mode:overlay;
+    filter:none;
+  }
+  /* second copy for crispness over photo */
+  .headline-wrap{position:relative}
+  .headline.solid{position:absolute;inset:0;mix-blend-mode:normal;color:rgba(255,255,255,.92);-webkit-text-stroke:0}
+  .hero-sub{
+    max-width:360px;text-transform:uppercase;letter-spacing:.14em;
+    font-size:13px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.7;
+    margin-top:26px;
+  }
+  /* floating UI */
+  .hero-thumb{
+    position:absolute;top:120px;right:0;width:180px;height:120px;border-radius:16px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 50px rgba(0,0,0,.4);z-index:3;
+  }
+  .hero-thumb img{width:100%;height:100%;object-fit:cover}
+  .cta-circle{
+    position:absolute;right:40px;bottom:40px;z-index:4;
+    width:180px;height:180px;border-radius:50%;
+    background:var(--orange);color:#fff;
+    display:grid;place-items:center;text-align:center;
+    font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;line-height:1.4;
+    box-shadow:0 16px 50px rgba(255,77,18,.5);
+    transition:transform .35s ease;cursor:pointer;padding:0 18px;
+  }
+  .cta-circle:hover{transform:scale(1.06) rotate(-3deg)}
+  .cta-circle span{display:inline-flex;flex-direction:column;align-items:center;gap:8px}
+  .cta-circle .ar{font-size:18px}
+  .stats-float{position:absolute;right:0;bottom:250px;z-index:3;display:flex;flex-direction:column;gap:14px}
+  .glass-card{
+    background:var(--glass);border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(14px);border-radius:16px;padding:18px 26px;min-width:220px;
+  }
+  .glass-card .big{font-size:34px;font-weight:700;letter-spacing:-.02em}
+  .glass-card .lbl{font-size:13px;color:rgba(255,255,255,.8)}
+
+  /* ---------------- MARQUEE ---------------- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--black)}
+  .marquee-track{display:flex;gap:60px;white-space:nowrap;padding:22px 0;animation:scroll 30s linear infinite;width:max-content}
+  .marquee-track span{font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;display:inline-flex;align-items:center;gap:60px;color:rgba(255,255,255,.85)}
+  .marquee-track span::after{content:"✦";color:var(--orange)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------------- ABOUT ---------------- */
+  section{position:relative}
+  .about{padding:130px 0 120px}
+  .about-head{display:grid;grid-template-columns:1fr 3fr;gap:40px;align-items:start;margin-bottom:90px}
+  .about-head h2{
+    font-size:clamp(26px,3.4vw,50px);
+    font-weight:400;line-height:1.18;letter-spacing:-.01em;text-transform:uppercase;
+    color:rgba(255,255,255,.78);
+  }
+  .about-head h2 b{font-weight:800;color:#fff}
+  .about-collage{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+  .about-collage .big-img{grid-column:1/6;border-radius:14px;overflow:hidden;height:420px}
+  .about-collage .big-img img{width:100%;height:100%;object-fit:cover}
+  .about-collage .sm-img{grid-column:6/8;border-radius:12px;overflow:hidden;height:200px}
+  .about-collage .sm-img img{width:100%;height:100%;object-fit:cover}
+  .about-collage .lead{grid-column:9/13;align-self:end;font-size:18px;line-height:1.6;color:rgba(255,255,255,.7);text-align:right}
+
+  .about-lower{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:120px;align-items:end}
+  .quote-block .person{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .person .ava{width:64px;height:64px;border-radius:50%;overflow:hidden;position:relative}
+  .person .ava img{width:100%;height:100%;object-fit:cover}
+  .person .ava::after{content:"";position:absolute;inset:0;background:var(--orange);mix-blend-mode:color;opacity:.55}
+  .person .name{font-weight:700;font-size:16px}
+  .person .role{font-size:13px;color:var(--muted)}
+  .quote-block blockquote{font-size:17px;line-height:1.7;color:rgba(255,255,255,.78);max-width:500px}
+  .challenge{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:14px;overflow:hidden}
+  .challenge .ph{height:320px}
+  .challenge .ph img{width:100%;height:100%;object-fit:cover}
+  .challenge .card{background:#fff;color:#111;padding:30px 28px;display:flex;flex-direction:column;justify-content:space-between}
+  .challenge .card p{font-size:15px;line-height:1.6;color:#333}
+  .challenge .card .tag{font-weight:700;font-size:15px;margin-top:24px}
+
+  /* ---------------- PROCESS ---------------- */
+  .process{padding:120px 0;border-top:1px solid var(--line)}
+  .sec-top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:70px}
+  .sec-top h2{font-size:clamp(34px,5vw,68px);font-weight:700;letter-spacing:-.02em;line-height:1;text-transform:uppercase}
+  .sec-top p{max-width:360px;color:var(--muted);font-size:15px}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:34px 28px 34px 0;border-top:1px solid var(--line)}
+  .step:not(:last-child){border-right:1px solid var(--line);padding-right:28px}
+  .step .n{font-size:14px;color:var(--orange);font-weight:700;margin-bottom:50px}
+  .step h3{font-size:22px;font-weight:600;margin-bottom:12px}
+  .step p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+  /* ---------------- PORTFOLIO ---------------- */
+  .portfolio{padding:120px 0;border-top:1px solid var(--line)}
+  .pf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .pf-card{position:relative;border-radius:16px;overflow:hidden;height:440px}
+  .pf-card.tall{height:440px}
+  .pf-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .pf-card:hover img{transform:scale(1.05)}
+  .pf-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,6,5,.85))}
+  .pf-meta{position:absolute;left:28px;right:28px;bottom:26px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end}
+  .pf-meta h3{font-size:26px;font-weight:700;letter-spacing:-.01em}
+  .pf-meta .spec{font-size:13px;color:rgba(255,255,255,.8);margin-top:6px;display:flex;gap:14px}
+  .pf-meta .price{font-weight:700;color:var(--orange-soft);font-size:18px;white-space:nowrap}
+
+  /* ---------------- REVIEWS ---------------- */
+  .reviews{padding:120px 0;border-top:1px solid var(--line)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rev{border:1px solid var(--line);border-radius:16px;padding:30px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+  .rev .stars{color:var(--orange);letter-spacing:3px;margin-bottom:18px}
+  .rev p{font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:24px}
+  .rev .who{display:flex;align-items:center;gap:12px}
+  .rev .who .d{width:42px;height:42px;border-radius:50%;background:var(--rust);display:grid;place-items:center;font-weight:700}
+  .rev .who .name{font-weight:600;font-size:14px}
+  .rev .who .loc{font-size:12px;color:var(--muted)}
+
+  /* ---------------- CTA ---------------- */
+  .cta{margin:0 auto;width:min(1320px,92vw)}
+  .cta-inner{
+    background:linear-gradient(135deg,var(--rust),var(--rust-2));
+    border-radius:28px;padding:90px 70px;position:relative;overflow:hidden;
+  }
+  .cta-inner::before{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,var(--orange),transparent 70%);opacity:.5;
+  }
+  .cta-inner h2{font-size:clamp(36px,6vw,84px);font-weight:800;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;max-width:780px;position:relative}
+  .cta-inner p{margin:24px 0 36px;max-width:480px;color:rgba(255,255,255,.85);font-size:16px;position:relative}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap;position:relative}
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:100px;padding:16px 28px;font-weight:600;font-size:15px;cursor:pointer;border:none;transition:transform .25s,background .25s}
+  .btn-light{background:#fff;color:#111}
+  .btn-light:hover{transform:translateY(-2px)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:#fff;color:#111}
+
+  /* ---------------- FOOTER ---------------- */
+  footer{padding:90px 0 40px}
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid var(--line)}
+  .foot-top .brand{font-size:24px;margin-bottom:18px}
+  .foot-top p{color:var(--muted);font-size:14.5px;max-width:320px}
+  .fcol h5{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:18px}
+  .fcol a{display:block;margin-bottom:11px;font-size:15px;color:rgba(255,255,255,.82);transition:color .2s}
+  .fcol a:hover{color:var(--orange)}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;color:var(--muted);font-size:13px;flex-wrap:wrap;gap:10px}
+  .foot-huge{font-size:clamp(60px,16vw,260px);font-weight:800;letter-spacing:-.04em;line-height:.8;text-align:center;padding:40px 0 0;text-transform:uppercase;color:rgba(255,255,255,.05)}
+
+  /* ---------------- CONSULT FORM ---------------- */
+  .consult-sec{padding:40px 0 100px;scroll-margin-top:100px}
+  .consult-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .consult-title{font-size:clamp(30px,4vw,56px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin-bottom:18px}
+  .consult-lead{color:var(--muted);max-width:380px;font-size:16px}
+  .lead-form{display:grid;gap:16px;max-width:520px}
+  .lead-form .field{display:flex;flex-direction:column;gap:8px}
+  .lead-form label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .lead-form input,.lead-form textarea{background:var(--black-2);border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:#fff;font-family:inherit;font-size:15px;transition:border-color .25s}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--orange)}
+  .lead-form textarea{min-height:120px;resize:vertical}
+  .btn-orange-solid{background:var(--orange);color:#fff}
+  .btn-orange-solid:hover{background:var(--orange-soft);transform:translateY(-2px)}
+  .form-msg{display:none;border-radius:12px;padding:15px 18px;font-size:15px}
+  .form-msg.ok{display:block;background:rgba(255,77,18,.12);border:1px solid var(--orange);color:#fff}
+  .form-msg.err{display:block;background:rgba(255,80,80,.12);border:1px solid #ff5b5b;color:#fff}
+  @media(max-width:768px){.consult-grid{grid-template-columns:1fr;gap:30px}}
+
+  /* ---------------- REVEAL ---------------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------------- RESPONSIVE ---------------- */
+  @media(max-width:1024px){
+    .nav-pill{display:none}
+    .about-head{grid-template-columns:1fr;gap:20px}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .step{border-right:none!important}
+    .rev-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:768px){
+    nav{height:72px}
+    .consult span:first-child{display:none}
+    .menu-toggle{display:block}
+    .nav-right .ic-btn{display:none}
+    h1.headline{font-size:clamp(52px,16vw,90px)}
+    .hero-thumb{width:120px;height:84px;top:96px}
+    .cta-circle{width:132px;height:132px;bottom:auto;top:40%;left:auto;right:0}
+    .stats-float{position:static;flex-direction:row;margin-top:24px;flex-wrap:wrap}
+    .hero-inner{padding-bottom:40px}
+    .about-collage{grid-template-columns:1fr;gap:18px}
+    .about-collage .big-img,.about-collage .sm-img,.about-collage .lead{grid-column:auto!important;height:auto}
+    .about-collage .big-img{height:300px}
+    .about-collage .sm-img{height:180px}
+    .about-collage .lead{text-align:left}
+    .about-lower{grid-template-columns:1fr;gap:50px}
+    .challenge{grid-template-columns:1fr}
+    .steps,.rev-grid,.pf-grid,.foot-top{grid-template-columns:1fr}
+    .cta-inner{padding:56px 28px}
+    .sec-top{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3l9 8" stroke="#ff4d12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ВЕЛОРА
+      </div>
+      <div class="nav-pill">
+        <a href="#about">О нас</a>
+        <a href="#portfolio">Проекты</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#reviews">Отзывы</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="ic-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></a>
+        <a href="#" class="ic-btn" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="#fff"><path d="M21.5 4.5L2.5 11.8c-1 .4-1 1.4-.1 1.7l4.9 1.5 1.9 5.9c.2.6.9.7 1.3.2l2.7-2.9 4.9 3.6c.6.4 1.4.1 1.5-.6l3-14.1c.2-.9-.6-1.6-1.5-1.1z"/></svg></a>
+        <a href="#consult" class="consult"><span>Консультация</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <button class="menu-toggle">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg">
+    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80" alt="Модульный дом на закате" />
+  </div>
+  <div class="hero-inner">
+    <div class="wrap" style="position:relative">
+      <div class="hero-thumb reveal">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="" />
+      </div>
+
+      <a href="#consult" class="cta-circle reveal">
+        <span>Запросить<br/>консультацию<span class="ar">↗</span></span>
+      </a>
+
+      <div class="stats-float">
+        <div class="glass-card reveal"><div class="big">120+</div><div class="lbl">домов сдано</div></div>
+        <div class="glass-card reveal"><div class="big">98%</div><div class="lbl">довольных клиентов</div></div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="headline-wrap">
+            <h1 class="headline">Создаём<br/>дом</h1>
+            <h1 class="headline solid" aria-hidden="true">Создаём<br/>дом</h1>
+          </div>
+          <p class="hero-sub">Проектируем, строим и устанавливаем дом под ваш образ жизни</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Модульные дома</span><span>Создаём дом</span><span>Умный дизайн</span><span>Эффективное строительство</span>
+    <span>Модульные дома</span><span>Создаём дом</span><span>Умный дизайн</span><span>Эффективное строительство</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-head">
+      <div class="eyebrow reveal">О нас</div>
+      <h2 class="reveal">Современный проект <b>модульных домов</b>, в основе которого умный дизайн, удобная жизнь и <b>эффективное строительство</b> в чистом и <b>минималистичном стиле</b></h2>
+    </div>
+
+    <div class="about-collage">
+      <div class="big-img reveal"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="" /></div>
+      <div class="sm-img reveal"><img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <p class="lead reveal">Для тех, кто ищет современный, эффективный и гибкий подход к строительству дома.</p>
+    </div>
+
+    <div class="about-lower">
+      <div class="quote-block reveal">
+        <div class="person">
+          <div class="ava"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="" /></div>
+          <div>
+            <div class="name">Даниил Марченко</div>
+            <div class="role">Операционный директор</div>
+          </div>
+        </div>
+        <blockquote>«Мы проектируем, строим и устанавливаем дом под ваш образ жизни, сочетая выверенную эстетику, премиальные материалы и безупречный сервис под ключ.»</blockquote>
+      </div>
+
+      <div class="challenge reveal">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+        <div class="card">
+          <p>Создать чистый и современный сайт, который простым языком объясняет процесс модульного строительства и вызывает доверие за счёт понятной структуры, визуала и прозрачной коммуникации.</p>
+          <div class="tag">Задача проекта</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-top">
+      <h2 class="reveal">Как мы работаем</h2>
+      <p class="reveal">Прозрачный процесс под ключ — от первого эскиза до ключей у вас в руках.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01 / Знакомство</div><h3>Консультация</h3><p>Изучаем ваш образ жизни, бюджет и участок, чтобы найти верную концепцию.</p></div>
+      <div class="step reveal"><div class="n">02 / Проект</div><h3>Архитектура</h3><p>Индивидуальные модульные планировки с фиксированной ценой и сроками.</p></div>
+      <div class="step reveal"><div class="n">03 / Производство</div><h3>Изготовление</h3><p>Дом изготавливается на производстве под строгим контролем качества.</p></div>
+      <div class="step reveal"><div class="n">04 / Монтаж</div><h3>Доставка</h3><p>Доставляем, монтируем и передаём дом, готовый к заселению.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="sec-top">
+      <h2 class="reveal">Наши проекты</h2>
+      <p class="reveal">Несколько домов, которые мы спроектировали, построили и установили по всей стране.</p>
+    </div>
+    <div class="pf-grid">
+      <div class="pf-card reveal"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="pf-meta"><div><h3>Гребень</h3><div class="spec"><span>96 м²</span><span>2 спальни</span><span>А-фрейм</span></div></div><div class="price">от 14,9 млн ₽</div></div>
+      </div>
+      <div class="pf-card reveal"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="pf-meta"><div><h3>Линия</h3><div class="spec"><span>128 м²</span><span>3 спальни</span><span>2 этажа</span></div></div><div class="price">от 19,9 млн ₽</div></div>
+      </div>
+      <div class="pf-card reveal"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="pf-meta"><div><h3>Солис</h3><div class="spec"><span>72 м²</span><span>1 спальня</span><span>студия</span></div></div><div class="price">от 10,6 млн ₽</div></div>
+      </div>
+      <div class="pf-card reveal"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="pf-meta"><div><h3>Панорама</h3><div class="spec"><span>160 м²</span><span>4 спальни</span><span>бассейн</span></div></div><div class="price">от 24,9 млн ₽</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-top">
+      <h2 class="reveal">Отзывы</h2>
+      <p class="reveal">Те, кто уже живёт в доме от ВЕЛОРА.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>От концепции до ключей — меньше четырёх месяцев. Качество превзошло все ожидания, дом ощущается по-настоящему индивидуальным.</p><div class="who"><div class="d">А</div><div><div class="name">Анна и Марк</div><div class="loc">Подмосковье</div></div></div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Прозрачная цена, никаких сюрпризов и команда, которой правда не всё равно. Наш модульный дом тёплый, светлый и экономичный.</p><div class="who"><div class="d">И</div><div><div class="name">Иван П.</div><div class="loc">Карелия</div></div></div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Минималистичная архитектура восхищает, а монтаж прошёл идеально. Мы заселились в ту же неделю, когда привезли дом.</p><div class="who"><div class="d">С</div><div><div class="name">София Р.</div><div class="loc">Сочи</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" style="padding:60px 0 30px">
+  <div class="cta">
+    <div class="cta-inner reveal">
+      <h2>Создадим ваш дом</h2>
+      <p>Расскажите о вашем участке и образе жизни — пришлём индивидуальную концепцию и фиксированную смету в течение дня.</p>
+      <div class="cta-actions">
+        <a href="#consult" class="btn btn-light">Записаться на консультацию ↗</a>
+        <a href="#consult" class="btn btn-ghost">Скачать каталог</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSULT FORM ============ -->
+<section id="consult" class="consult-sec">
+  <div class="wrap">
+    <div class="consult-grid">
+      <div class="reveal">
+        <div class="eyebrow">Заявка</div>
+        <h2 class="consult-title">Записаться на<br/>консультацию</h2>
+        <p class="consult-lead">Оставьте контакты — рассчитаем стоимость вашего дома и перезвоним в течение дня.</p>
+      </div>
+      <form id="leadForm" class="lead-form reveal">
+        <div class="field"><label for="name">Имя</label><input id="name" name="name" type="text" placeholder="Как к вам обращаться" required></div>
+        <div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" placeholder="you@example.com"></div>
+        <div class="field"><label for="message">Сообщение</label><textarea id="message" name="message" placeholder="Участок, бюджет, пожелания"></textarea></div>
+        <button type="submit" class="btn btn-orange-solid">Отправить заявку ↗</button>
+        <div id="formMsg" class="form-msg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3l9 8" stroke="#ff4d12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          ВЕЛОРА
+        </div>
+        <p>Модульные дома под ключ. Проектируем, строим и устанавливаем премиальные дома под ваш образ жизни.</p>
+      </div>
+      <div class="fcol"><h5>Навигация</h5><a href="#about">О нас</a><a href="#portfolio">Проекты</a><a href="#process">Как мы работаем</a><a href="#reviews">Отзывы</a></div>
+      <div class="fcol"><h5>Контакты</h5><a href="tel:+70000000000">+7 000 000-00-00</a><a href="mailto:hello@velora.ru">hello@velora.ru</a><a href="#">Заказать звонок ↗</a></div>
+      <div class="fcol"><h5>Соцсети</h5><a href="#">Instagram</a><a href="#">Telegram</a><a href="#">Pinterest</a><a href="#">ВКонтакте</a></div>
+    </div>
+    <div class="foot-huge">ВЕЛОРА</div>
+    <div class="foot-bottom">
+      <span>© 2026 ВЕЛОРА. Все права защищены.</span>
+      <span>Конфиденциальность · Cookies · Условия</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky header
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>40)});
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(Math.min(i,4)*60)+'ms';e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // subtle hero parallax
+  const heroBg=document.getElementById('heroBg');
+  addEventListener('scroll',()=>{const y=scrollY;if(y<900)heroBg.style.transform='translateY('+(y*0.18)+'px)'},{passive:true});
+
+  // lead form -> сохранение заявки в базу
+  const form=document.getElementById('leadForm');
+  if(form)form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const msg=document.getElementById('formMsg');
+    const data={name:form.name.value,phone:form.phone.value,email:form.email.value,message:form.message.value};
+    try{
+      const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(!r.ok)throw new Error('bad');
+      msg.className='form-msg ok';
+      msg.textContent='Спасибо! Заявка сохранена — мы свяжемся с вами в течение дня.';
+      form.reset();
+    }catch(err){
+      msg.className='form-msg err';
+      msg.textContent='Не удалось отправить заявку. Попробуйте позже или позвоните нам.';
+    }
+  });
+</script>
+</body>
+</html>
