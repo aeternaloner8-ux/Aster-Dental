@@ -3,193 +3,278 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aster Dental — стоматологическая клиника</title>
+<title>Петрова Екатерина - сайты, лендинги и AI-решения</title>
+<meta name="description" content="Портфолио Петровой Екатерины: веб-дизайн, разработка сайтов, лендинги, AI-агенты, чат-боты и автоматизация процессов для бизнеса." />
+<meta name="theme-color" content="#080a0f" />
+<meta property="og:title" content="Петрова Екатерина - web и AI-решения" />
+<meta property="og:description" content="Лендинги, сайты, UX/UI, AI-агенты, чат-боты и автоматизация процессов для бизнеса." />
+<meta property="og:image" content="assets/petrova/og-petrova-ekaterina.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="ref-page">
-<header id="hdr" class="ref-header">
-  <div class="ref-wrap ref-nav">
-    <a class="ref-brand" href="index.html">
-      <img src="assets/aster-mark.svg" alt="" />
-      <span>Международная стоматологическая клиника Aster Dental</span>
-    </a>
-    <nav class="ref-menu" aria-label="Основная навигация">
-      <a href="#programs">Популярное</a>
-      <a href="#programs">Услуги</a>
-      <a href="#doctors">Врачи</a>
-      <a href="#programs">Прайс</a>
-      <a href="contacts.html#appointment">Вопросы</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <a class="ref-address" href="contacts.html">г. Москва<br>Чистопрудный б-р, 12</a>
-    <button class="menu-toggle" id="menuBtn" aria-label="Открыть меню">☰</button>
-  </div>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="site-header" id="header">
+  <a class="brand" href="#top" aria-label="Петрова Екатерина - к началу страницы">
+    <img src="assets/petrova/pe-monogram.png" alt="" width="42" height="42" />
+    <span>Петрова Екатерина</span>
+  </a>
+  <nav class="desktop-nav" aria-label="Основная навигация">
+    <a href="#about">Обо мне</a>
+    <a href="#trust">Почему я</a>
+    <a href="#services">Услуги</a>
+    <a href="#projects">Проекты</a>
+    <a href="#process">Процесс</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a class="header-cta" href="#contacts">Обсудить проект</a>
+  <button class="menu-button" type="button" id="menuButton" aria-label="Открыть меню" aria-expanded="false">
+    <span></span><span></span>
+  </button>
 </header>
 
-<div class="mobile-nav" id="mnav">
-  <button class="close" id="mnavClose" aria-label="Закрыть меню">×</button>
-  <a href="index.html">Главная</a>
-  <a href="#programs">Услуги</a>
-  <a href="#doctors">Врачи</a>
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
+  <a href="#about">Обо мне</a>
+  <a href="#trust">Почему я</a>
+  <a href="#services">Услуги</a>
+  <a href="#projects">Проекты</a>
+  <a href="#process">Процесс</a>
   <a href="#contacts">Контакты</a>
-  <a href="contacts.html#appointment">Запись</a>
-</div>
+</nav>
 
-<main>
-  <section class="ref-hero luxe-hero">
-    <div class="ref-wrap ref-hero-card luxe-frame reveal">
-      <div class="luxe-topline">
-        <span class="ref-chip">Премиальная стоматология</span>
-        <p>Москва, Чистопрудный б-р, 12</p>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">web design / websites / automation</div>
+        <h1>Привет, меня зовут Петрова Екатерина. Я веб-дизайнер и создаю digital-решения для бизнеса.</h1>
+        <p>Проектирую и запускаю лендинги, сайты, интерфейсы, AI-агентов, чат-ботов и автоматизации, которые помогают бизнесу понятнее выглядеть, быстрее обрабатывать заявки и работать без лишней рутины.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacts">Обсудить проект</a>
+          <a class="btn btn-ghost" href="#projects">Смотреть работы</a>
+        </div>
       </div>
-      <div class="luxe-hero-grid">
-        <div class="luxe-copy">
-          <span class="luxe-kicker">Aster Dental</span>
-          <h1>Улыбка, которая выглядит <em>естественно дорого</em></h1>
-          <p>Диагностика, лечение, имплантация и эстетика в клинике с атмосферой частного медицинского клуба.</p>
-          <div class="luxe-actions">
-            <a class="ref-btn" href="contacts.html#appointment">Записаться на прием ↗</a>
-            <a class="luxe-link" href="#programs">Смотреть услуги</a>
+      <div class="hero-media reveal">
+        <img src="assets/petrova/hero-portrait-card.png" alt="Петрова Екатерина, веб-дизайнер и специалист по digital-решениям" width="1100" height="1400" />
+      </div>
+    </div>
+    <div class="wrap hero-facts reveal" aria-label="Коротко о направлениях работы">
+      <div><span>01</span><b>Веб-дизайн и UX/UI</b></div>
+      <div><span>02</span><b>Лендинги и сайты</b></div>
+      <div><span>03</span><b>AI-агенты и чат-боты</b></div>
+      <div><span>04</span><b>Автоматизация процессов</b></div>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="wrap split">
+      <div class="section-head reveal">
+        <span class="section-kicker">Обо мне</span>
+        <h2>Соединяю дизайн, структуру и инструменты, которые помогают бизнесу работать быстрее.</h2>
+      </div>
+      <div class="about-copy reveal">
+        <p>Я помогаю упаковать продукт в понятный сайт и усилить процессы с помощью автоматизации и AI. Моя работа не только про красивый экран, а про систему: структура, визуал, путь клиента, заявки, сценарии, боты и инструменты, которые реально помогают в работе.</p>
+        <div class="about-list">
+          <article>
+            <span>01</span>
+            <h3>Продумываю структуру</h3>
+            <p>Разбираю смысл, аудиторию и путь клиента до заявки.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Создаю сайты и лендинги</h3>
+            <p>Делаю визуальную систему, адаптивы и готовлю макеты к верстке.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Автоматизирую процессы</h3>
+            <p>Связываю формы, таблицы, CRM, уведомления, ботов и AI-сценарии.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section trust" id="trust">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-kicker">Почему со мной спокойно</span>
+        <h2>Один специалист видит проект целиком: дизайн, смысл, путь клиента и автоматизацию.</h2>
+      </div>
+      <div class="trust-ledger">
+        <article class="reveal"><span>01</span><h3>Понятные этапы</h3><p>От брифа и структуры до дизайна, адаптивов и запуска. Вы видите, что происходит на каждом шаге.</p></article>
+        <article class="reveal"><span>02</span><h3>Не только красиво</h3><p>Интерфейс строится вокруг бизнес-задачи: заявки, доверие, объяснение ценности и следующий шаг клиента.</p></article>
+        <article class="reveal"><span>03</span><h3>Можно расти поэтапно</h3><p>Начинаем с лендинга или сайта, потом добавляем бота, AI-агента, CRM-связки и автоматизацию.</p></article>
+        <article class="reveal"><span>04</span><h3>Готово к верстке</h3><p>Макеты, сетки, состояния, адаптивы и визуальные правила готовятся так, чтобы разработка шла без хаоса.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section showcase">
+    <div class="wrap showcase-grid">
+      <div class="showcase-copy reveal">
+        <span class="section-kicker">Сайт как рабочая система</span>
+        <h2>Не просто экран, а понятный путь от первого впечатления до заявки.</h2>
+        <p>Сайт объясняет ценность продукта, показывает доверие, ведет клиента к действию, а автоматизация помогает не терять заявки после отправки формы.</p>
+      </div>
+      <img class="showcase-image reveal" src="assets/petrova/website-development-showcase.png" alt="Визуал разработки сайта с интерфейсом, кодом и адаптивами" width="1200" height="800" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-kicker">Что я умею</span>
+        <h2>Направления, которые можно заказать отдельно или собрать в один запуск.</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <img src="assets/petrova/service-web-design.png" alt="Дизайн сайтов в Figma и UX/UI" width="900" height="640" loading="lazy" />
+          <h3>Веб-дизайн и UX/UI</h3>
+          <p>Структура, прототипы, дизайн-концепция, UI-kit, адаптивы и подготовка макета к разработке.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="assets/petrova/service-landing-sites.png" alt="Лендинги и сайты под ключ" width="900" height="640" loading="lazy" />
+          <h3>Лендинги и сайты</h3>
+          <p>Первый экран, блоки доверия, услуги, кейсы, формы, контактные сценарии и понятная навигация.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="assets/petrova/service-ai-agents.png" alt="Разработка сайтов на HTML CSS JS" width="900" height="640" loading="lazy" />
+          <h3>Разработка сайтов</h3>
+          <p>Верстка, адаптив, базовая логика, анимации, формы и аккуратная сборка статических страниц.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="assets/petrova/service-automation.png" alt="Адаптив сайта и запуск проекта" width="900" height="640" loading="lazy" />
+          <h3>AI и автоматизация</h3>
+          <p>AI-агенты, чат-боты, Telegram-боты, заявки из форм, CRM, таблицы, уведомления и интеграции.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section projects" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-kicker">Проекты</span>
+        <h2>Карточки под реальные кейсы: без фейковых цифр, с понятной задачей и результатом.</h2>
+      </div>
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <img src="assets/petrova/case-ai-consultant.png" alt="Кейс сайт-портфолио" width="1000" height="720" loading="lazy" />
+          <div class="project-body">
+            <span>Сайт-портфолио</span>
+            <h3>Личный сайт специалиста</h3>
+            <p>Задача: показать экспертизу, услуги и быстрый контакт без перегруза.</p>
+            <dl><div><dt>Сделано</dt><dd>Структура, дизайн, адаптивы, форма</dd></div><div><dt>Результат</dt><dd>Готовая основа для публикации и продвижения</dd></div></dl>
           </div>
-        </div>
-        <div class="luxe-appointment">
-          <span>Первичный визит</span>
-          <b>45 минут</b>
-          <p>3D-снимок, консультация врача и понятный план лечения до начала работ.</p>
-        </div>
-      </div>
-      <div class="ref-hero-photo luxe-photo">
-        <img src="assets/aster-dental-premium-clinic.png" alt="Премиальный интерьер стоматологической клиники Aster Dental" />
-        <div class="luxe-photo-label">
-          <b>01</b>
-          <span>частные кабинеты, мягкий свет, цифровая диагностика</span>
-        </div>
-        <div class="ref-stats">
-          <div><b>12+</b><span>лет заботимся<br>о вашей улыбке</span></div>
-          <div><b>3 800+</b><span>пациентов нам<br>доверились</span></div>
-          <div><b>4,9</b><span>рейтинг среди<br>клиник Москвы</span></div>
-          <div><b>5 000+</b><span>проведено<br>процедур</span></div>
-          <div><b>ТОП5</b><span>в эстетической<br>стоматологии</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ref-section" id="programs">
-    <div class="ref-wrap ref-section-head reveal">
-      <span class="ref-chip">Что лечим</span>
-      <div>
-        <h2>Популярные услуги</h2>
-        <p>Самые частые запросы пациентов: от боли и кариеса до имплантации, прикуса и эстетики улыбки.</p>
-      </div>
-    </div>
-    <div class="ref-wrap ref-programs">
-      <article class="ref-program ref-program-dark reveal"><span>от 8 900 ₽</span><h3>Лечение зубов</h3><p>Кариес, пульпит, каналы под микроскопом и эстетичные реставрации.</p><a href="contacts.html#appointment">Записаться ↗</a></article>
-      <article class="ref-program reveal"><span>от 54 000 ₽</span><h3>Имплантация</h3><p>3D-планирование, установка имплантов и постоянные коронки.</p><a href="contacts.html#appointment">Узнать план ↗</a></article>
-      <article class="ref-program reveal"><span>от 180 000 ₽</span><h3>Элайнеры и брекеты</h3><p>Коррекция прикуса с прогнозом движения зубов.</p><a href="contacts.html#appointment">Узнать план ↗</a></article>
-      <article class="ref-program reveal"><span>от 55 000 ₽</span><h3>Виниры и эстетика</h3><p>Дизайн улыбки, мокап и натуральная керамика.</p><a href="contacts.html#appointment">Узнать план ↗</a></article>
-    </div>
-  </section>
-
-  <section class="ref-section">
-    <div class="ref-wrap ref-section-head reveal">
-      <span class="ref-chip">Направления</span>
-      <div>
-        <h2>Направления нашей клиники</h2>
-        <p>Выберите направление, чтобы записаться к профильному врачу и получить точный план лечения.</p>
-      </div>
-    </div>
-    <div class="ref-wrap ref-directions reveal">
-      <div><b>Терапия</b><span>Лечение кариеса, каналов и эстетичные реставрации</span><em>Орлова М.А.</em><a href="contacts.html#appointment">Записаться ↗</a></div>
-      <div><b>Имплантация</b><span>3D-планирование, хирургия, коронки на имплантах</span><em>Лебедев А.В.</em><a href="contacts.html#appointment">Записаться ↗</a></div>
-      <div><b>Ортодонтия</b><span>Элайнеры, брекеты и коррекция прикуса</span><em>Соколова Е.С.</em><a href="contacts.html#appointment">Записаться ↗</a></div>
-      <div><b>Эстетика</b><span>Виниры, отбеливание и дизайн улыбки</span><em>Павлова Н.К.</em><a href="contacts.html#appointment">Записаться ↗</a></div>
-    </div>
-  </section>
-
-  <section class="ref-section">
-    <div class="ref-wrap ref-clinic reveal">
-      <div>
-        <span class="ref-chip">О клинике</span>
-        <h2>Многопрофильная стоматология Aster Dental</h2>
-        <p>Клиника объединяет терапевтов, ортопедов, хирургов, ортодонтов и специалистов эстетической стоматологии. В одном месте можно пройти диагностику, получить понятный план и завершить лечение без лишних переходов между центрами.</p>
-        <div class="ref-mini-grid">
-          <span>Цифровая диагностика</span>
-          <span>Микроскопы Leica</span>
-          <span>Седация по показаниям</span>
-          <span>Послеоперационная поддержка</span>
-        </div>
-      </div>
-      <div class="ref-clinic-media">
-        <img src="assets/aster-dental-premium-clinic.png" alt="Интерьер премиальной стоматологии Aster Dental" />
-        <div>
-          <b>Aster Dental</b>
-          <span>частные кабинеты, мягкий свет и спокойная атмосфера приема</span>
-        </div>
+        </article>
+        <article class="project-card reveal">
+          <img src="assets/petrova/case-landing-concept.png" alt="Кейс лендинг бизнеса" width="1000" height="720" loading="lazy" />
+          <div class="project-body">
+            <span>Лендинг</span>
+            <h3>Страница под запуск рекламы</h3>
+            <p>Задача: быстро объяснить ценность продукта и довести пользователя до заявки.</p>
+            <dl><div><dt>Сделано</dt><dd>Прототип, дизайн, адаптивная верстка</dd></div><div><dt>Результат</dt><dd>Понятная посадочная страница для теста гипотезы</dd></div></dl>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <img src="assets/petrova/case-automation-flow.png" alt="Кейс сайт-витрина" width="1000" height="720" loading="lazy" />
+          <div class="project-body">
+            <span>Сайт-витрина</span>
+            <h3>Каталог услуг или продуктов</h3>
+            <p>Задача: собрать карточки, формы заявок и визуальную систему в один сайт.</p>
+            <dl><div><dt>Сделано</dt><dd>Сетка, карточки, CTA, контакты</dd></div><div><dt>Результат</dt><dd>Удобная страница для презентации предложения</dd></div></dl>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="ref-section" id="doctors">
-    <div class="ref-wrap ref-section-head reveal">
-      <span class="ref-chip">Врачи клиники</span>
-      <div>
-        <h2>Вас будут лечить опытные специалисты</h2>
-        <p>Каждый врач ведет пациента по своему направлению и подключает коллег для комплексных случаев.</p>
+  <section class="section formats">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-kicker">Форматы работы</span>
+        <h2>Можно прийти с одной задачей или собрать комплексный digital-запуск.</h2>
       </div>
-    </div>
-    <div class="ref-wrap ref-doctors">
-      <article class="ref-doctor reveal"><img src="assets/doctor-orlova.png" alt="Мария Орлова"><div><span>Орлова</span><h3>Мария Андреевна</h3><p>Главный врач, ортопед. Восстановление улыбки, виниры, коронки.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
-      <article class="ref-doctor reveal"><img src="assets/doctor-lebedev.png" alt="Андрей Лебедев"><div><span>Лебедев</span><h3>Андрей Викторович</h3><p>Хирург-имплантолог. Имплантация, костная пластика, навигационные шаблоны.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
-      <article class="ref-doctor reveal"><img src="assets/doctor-sokolova.png" alt="Елена Соколова"><div><span>Соколова</span><h3>Елена Сергеевна</h3><p>Ортодонт. Элайнеры, брекеты и комплексная коррекция прикуса.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
+      <div class="format-grid">
+        <article class="format-card reveal"><span>01</span><h3>Лендинг</h3><p>Структура, дизайн, адаптивы, форма заявки и подготовка к запуску.</p></article>
+        <article class="format-card reveal"><span>02</span><h3>Сайт / портфолио</h3><p>Личный бренд, услуги, кейсы, доверие, контакты и понятная навигация.</p></article>
+        <article class="format-card reveal"><span>03</span><h3>UX/UI дизайн</h3><p>Прототипы, интерфейсы, UI-kit, дизайн-система и макеты для разработчика.</p></article>
+        <article class="format-card reveal"><span>04</span><h3>AI-агент или бот</h3><p>Сценарии общения, сбор данных, квалификация заявок и передача результата.</p></article>
+        <article class="format-card reveal"><span>05</span><h3>Автоматизация</h3><p>Формы, таблицы, CRM, Telegram, уведомления и связки между сервисами.</p></article>
+        <article class="format-card reveal"><span>06</span><h3>Редизайн</h3><p>Обновление структуры, визуала и пользовательского пути без потери смысла.</p></article>
+      </div>
     </div>
   </section>
 
-  <section class="ref-section">
-    <div class="ref-wrap ref-reviews">
-      <div class="ref-review-title reveal">
-        <span class="ref-chip">Отзывы</span>
-        <h2>Наши благодарные пациенты</h2>
-        <p>Реальные истории о диагностике, лечении и общении со специалистами.</p>
+  <section class="section process" id="process">
+    <div class="wrap process-grid">
+      <div class="section-head reveal">
+        <span class="section-kicker">Процесс</span>
+        <h2>От идеи до запуска - без черного ящика.</h2>
       </div>
-      <div class="ref-rating reveal">
-        <b>4,9</b>
-        <span>Средний балл клиники<br>на независимых порталах</span>
-        <div><em>Яндекс</em><em>НаПоправку</em><em>Продокторов</em><em>Докту</em></div>
+      <div class="steps">
+        <article class="reveal"><span>01</span><h3>Бриф и погружение</h3><p>Разбираем задачу, аудиторию, продукт, ограничения и желаемый результат.</p></article>
+        <article class="reveal"><span>02</span><h3>Структура и прототип</h3><p>Собираем смысловую схему страницы и путь пользователя до целевого действия.</p></article>
+        <article class="reveal"><span>03</span><h3>Дизайн-концепция</h3><p>Определяем визуальный стиль, типографику, сетку, карточки и состояния.</p></article>
+        <article class="reveal"><span>04</span><h3>Экраны и адаптивы</h3><p>Делаем все блоки и мобильные версии, чтобы сайт не ломался на разных устройствах.</p></article>
+        <article class="reveal"><span>05</span><h3>Автоматизация</h3><p>Если нужно, подключаем формы, ботов, AI-сценарии, таблицы, CRM или уведомления.</p></article>
+        <article class="reveal"><span>06</span><h3>Передача или запуск</h3><p>Готовим материалы для разработчика или собираем страницу и проверяем результат.</p></article>
       </div>
-      <article class="ref-video-card reveal"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=700&q=85" alt="Интервью с пациенткой"><span>Интервью<br>с пациенткой</span><button class="video-trigger" type="button" data-video-title="Интервью с пациенткой">▶</button></article>
-      <article class="ref-text-review reveal"><h3>Дамир Алексеев</h3><p>Решил пару вопросов за один визит, сервис на высоте. Удобно, что все находится в одном месте и врач подробно расписал план лечения.</p></article>
-      <article class="ref-before-after reveal"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=85" alt="Эстетическое лечение"><span>Эстетическая стоматология</span><button class="video-trigger" type="button" data-video-title="Эстетическая стоматология">▶</button></article>
-      <article class="ref-text-review reveal"><h3>Ольга Орлова</h3><p>Очень приятный персонал. После консультации стало понятно, какие шаги нужны и сколько времени займет лечение.</p></article>
-      <article class="ref-review-stat reveal"><div><span>380+</span><p>позитивных изменений пациентов нашей клиники</p></div><a href="contacts.html#appointment">Записаться ↗</a></article>
     </div>
   </section>
 
-  <section class="ref-section ref-location" id="contacts">
-    <div class="ref-wrap ref-location-head reveal">
-      <span class="ref-chip">Контакты</span>
-      <div>
-        <h2>Расположение</h2>
-        <p>Клиника расположена по адресу: г. Москва, Чистопрудный бульвар, 12. Рядом метро, удобная транспортная развязка и парковка для пациентов.</p>
+  <section class="section faq" id="faq">
+    <div class="wrap faq-grid">
+      <div class="section-head reveal">
+        <span class="section-kicker">FAQ</span>
+        <h2>Коротко о старте проекта.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details open><summary>Можно заказать только дизайн лендинга?</summary><p>Да. Можно сделать структуру, прототип, дизайн-концепцию, все блоки и адаптивы для передачи в разработку.</p></details>
+        <details><summary>Можно сделать сайт и сразу подключить автоматизацию?</summary><p>Да. Например, форма на сайте может отправлять заявку в Telegram, таблицу, CRM или запускать сценарий обработки.</p></details>
+        <details><summary>Что такое AI-агент и чем он помогает?</summary><p>Это сценарий или бот, который может отвечать пользователям, собирать данные, квалифицировать заявки и передавать результат вам.</p></details>
+        <details><summary>Можно сделать Telegram-бота?</summary><p>Да. Бот может принимать заявки, задавать вопросы, выдавать информацию, подключаться к таблицам и помогать в рутинных процессах.</p></details>
+        <details><summary>Что нужно для старта?</summary><p>Достаточно описать задачу, нишу, примерные цели сайта и показать референсы, которые нравятся по структуре или настроению.</p></details>
       </div>
     </div>
-    <a class="ref-map reveal google-map-link" href="https://share.google/RaCvDrhNMhfhH6qFT" target="_blank" rel="noopener" aria-label="Открыть расположение Aster Dental в Google Maps">
-      <span class="map-route">Открыть Google Maps ↗</span>
-      <div class="ref-map-pin"><img src="assets/aster-mark.svg" alt="">г. Москва<br><b>Чистопрудный б-р, 12</b></div>
-    </a>
+  </section>
+
+  <section class="section contacts" id="contacts">
+    <div class="wrap contact-grid">
+      <div class="contact-copy reveal">
+        <span class="section-kicker">Контакты</span>
+        <h2>Давайте обсудим ваш проект.</h2>
+        <p>Напишите, что нужно сделать: лендинг, сайт, редизайн, AI-агент, бот или автоматизация. Я помогу разложить задачу на понятные этапы.</p>
+        <div class="contact-links">
+          <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:hello@petrova.design">hello@petrova.design</a>
+        </div>
+      </div>
+      <form class="contact-form reveal" id="contactForm">
+        <label>Имя<input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required /></label>
+        <label>Контакт<input type="text" name="contact" autocomplete="email" placeholder="Telegram, WhatsApp или email" required /></label>
+        <label>Задача<textarea name="message" rows="5" placeholder="Коротко опишите, что нужно сделать" required></textarea></label>
+        <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </section>
 </main>
 
-<footer class="ref-footer">
-  <div class="ref-wrap ref-footer-grid">
-    <a href="contacts.html#appointment">Политика конфиденциальности<br>и защиты персональных данных</a>
-    <a href="contacts.html#appointment">Лицензия на осуществление<br>медицинской деятельности</a>
-    <a class="ref-footer-btn" href="contacts.html#appointment">Записаться на прием ↗</a>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <a class="brand" href="#top">
+      <img src="assets/petrova/pe-monogram.png" alt="" width="38" height="38" />
+      <span>Петрова Екатерина</span>
+    </a>
+    <p>Веб-дизайн, сайты, лендинги, AI-решения и автоматизация.</p>
+    <a href="#contacts">Обсудить проект</a>
   </div>
-  <div class="ref-wrap ref-copy">© 2026 Aster Dental. Все права защищены.</div>
 </footer>
 
 <script src="main.js"></script>
