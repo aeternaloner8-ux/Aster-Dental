@@ -6,10 +6,11 @@
 <title>Aster Dental — стоматологическая клиника</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="ref-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
 <header id="hdr" class="ref-header">
   <div class="ref-wrap ref-nav">
     <a class="ref-brand" href="index.html">
@@ -25,12 +26,12 @@
       <a href="#contacts">Контакты</a>
     </nav>
     <a class="ref-address" href="contacts.html">г. Москва<br>Чистопрудный б-р, 12</a>
-    <button class="menu-toggle" id="menuBtn" aria-label="Открыть меню">☰</button>
+    <button class="menu-toggle" id="menuBtn" aria-label="Открыть меню"><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-nav" id="mnav">
-  <button class="close" id="mnavClose" aria-label="Закрыть меню">×</button>
+  <button class="close" id="mnavClose" aria-label="Закрыть меню"></button>
   <a href="index.html">Главная</a>
   <a href="#programs">Услуги</a>
   <a href="#doctors">Врачи</a>
@@ -38,31 +39,40 @@
   <a href="contacts.html#appointment">Запись</a>
 </div>
 
-<main>
+<main id="main">
   <section class="ref-hero luxe-hero">
     <div class="ref-wrap ref-hero-card luxe-frame reveal">
       <div class="luxe-topline">
         <span class="ref-chip">Премиальная стоматология</span>
-        <p>Москва, Чистопрудный б-р, 12</p>
+        <div class="luxe-status" aria-label="Статус клиники">
+          <span>Сегодня свободно 4 окна</span>
+          <span>План лечения за 45 минут</span>
+        </div>
       </div>
       <div class="luxe-hero-grid">
         <div class="luxe-copy">
           <span class="luxe-kicker">Aster Dental</span>
-          <h1>Улыбка, которая выглядит <em>естественно дорого</em></h1>
-          <p>Диагностика, лечение, имплантация и эстетика в клинике с атмосферой частного медицинского клуба.</p>
+          <h1>Ваш путь к уверенной улыбке <em>начинается здесь</em></h1>
+          <p>Цифровая диагностика, лечение, имплантация и эстетика в атмосфере частного медицинского клуба.</p>
           <div class="luxe-actions">
             <a class="ref-btn" href="contacts.html#appointment">Записаться на прием ↗</a>
-            <a class="luxe-link" href="#programs">Смотреть услуги</a>
+            <a class="luxe-link" href="#patient-flow">Как проходит прием</a>
           </div>
         </div>
-        <div class="luxe-appointment">
+        <div class="luxe-appointment" aria-label="Быстрая запись на первичный визит">
           <span>Первичный визит</span>
-          <b>45 минут</b>
+          <b>45 мин</b>
           <p>3D-снимок, консультация врача и понятный план лечения до начала работ.</p>
+          <a href="contacts.html#appointment">Подобрать время ↗</a>
         </div>
       </div>
+      <div class="luxe-servicebar" aria-label="Ключевые преимущества">
+        <span>3D-диагностика до лечения</span>
+        <span>Отдельные врачи по направлениям</span>
+        <span>План, сроки и стоимость до старта</span>
+      </div>
       <div class="ref-hero-photo luxe-photo">
-        <img src="assets/aster-dental-premium-clinic.png" alt="Премиальный интерьер стоматологической клиники Aster Dental" />
+        <img src="assets/aster-dental-premium-clinic.png" alt="Премиальный интерьер стоматологической клиники Aster Dental" width="1672" height="941" />
         <div class="luxe-photo-label">
           <b>01</b>
           <span>частные кабинеты, мягкий свет, цифровая диагностика</span>
@@ -75,6 +85,22 @@
           <div><b>ТОП5</b><span>в эстетической<br>стоматологии</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="ref-section ref-patient-flow" id="patient-flow">
+    <div class="ref-wrap ref-section-head reveal">
+      <span class="ref-chip">Путь пациента</span>
+      <div>
+        <h2>Сначала ясность, потом лечение</h2>
+        <p>Мы не начинаем сложные процедуры вслепую: пациент видит диагностику, варианты, сроки и финальную эстетику до старта.</p>
+      </div>
+    </div>
+    <div class="ref-wrap flow-board">
+      <article class="flow-card reveal"><span>01</span><h3>Диагностика</h3><p>3D-снимок, фото-протокол, осмотр и фиксация запроса пациента.</p></article>
+      <article class="flow-card reveal"><span>02</span><h3>План</h3><p>Врач показывает маршрут лечения, этапы, сроки и прозрачную смету.</p></article>
+      <article class="flow-card reveal"><span>03</span><h3>Лечение</h3><p>Профильные специалисты работают по единому клиническому плану.</p></article>
+      <article class="flow-card reveal"><span>04</span><h3>Сопровождение</h3><p>Контроль результата, рекомендации и план профилактических визитов.</p></article>
     </div>
   </section>
 
@@ -124,7 +150,7 @@
         </div>
       </div>
       <div class="ref-clinic-media">
-        <img src="assets/aster-dental-premium-clinic.png" alt="Интерьер премиальной стоматологии Aster Dental" />
+        <img src="assets/aster-dental-premium-clinic.png" alt="Интерьер премиальной стоматологии Aster Dental" loading="lazy" width="1672" height="941" />
         <div>
           <b>Aster Dental</b>
           <span>частные кабинеты, мягкий свет и спокойная атмосфера приема</span>
@@ -142,9 +168,9 @@
       </div>
     </div>
     <div class="ref-wrap ref-doctors">
-      <article class="ref-doctor reveal"><img src="assets/doctor-orlova.png" alt="Мария Орлова"><div><span>Орлова</span><h3>Мария Андреевна</h3><p>Главный врач, ортопед. Восстановление улыбки, виниры, коронки.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
-      <article class="ref-doctor reveal"><img src="assets/doctor-lebedev.png" alt="Андрей Лебедев"><div><span>Лебедев</span><h3>Андрей Викторович</h3><p>Хирург-имплантолог. Имплантация, костная пластика, навигационные шаблоны.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
-      <article class="ref-doctor reveal"><img src="assets/doctor-sokolova.png" alt="Елена Соколова"><div><span>Соколова</span><h3>Елена Сергеевна</h3><p>Ортодонт. Элайнеры, брекеты и комплексная коррекция прикуса.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
+      <article class="ref-doctor reveal"><img src="assets/doctor-orlova.png" alt="Мария Орлова" loading="lazy" width="900" height="900"><div><span>Орлова</span><h3>Мария Андреевна</h3><p>Главный врач, ортопед. Восстановление улыбки, виниры, коронки.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
+      <article class="ref-doctor reveal"><img src="assets/doctor-lebedev.png" alt="Андрей Лебедев" loading="lazy" width="900" height="900"><div><span>Лебедев</span><h3>Андрей Викторович</h3><p>Хирург-имплантолог. Имплантация, костная пластика, навигационные шаблоны.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
+      <article class="ref-doctor reveal"><img src="assets/doctor-sokolova.png" alt="Елена Соколова" loading="lazy" width="900" height="900"><div><span>Соколова</span><h3>Елена Сергеевна</h3><p>Ортодонт. Элайнеры, брекеты и комплексная коррекция прикуса.</p><a href="contacts.html#appointment">Записаться ↗</a></div></article>
     </div>
   </section>
 
@@ -160,9 +186,9 @@
         <span>Средний балл клиники<br>на независимых порталах</span>
         <div><em>Яндекс</em><em>НаПоправку</em><em>Продокторов</em><em>Докту</em></div>
       </div>
-      <article class="ref-video-card reveal"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=700&q=85" alt="Интервью с пациенткой"><span>Интервью<br>с пациенткой</span><button class="video-trigger" type="button" data-video-title="Интервью с пациенткой">▶</button></article>
+      <article class="ref-video-card reveal"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=700&q=85" alt="Интервью с пациенткой" loading="lazy"><span>Интервью<br>с пациенткой</span><button class="video-trigger" type="button" data-video-title="Интервью с пациенткой" aria-label="Открыть видео: интервью с пациенткой"></button></article>
       <article class="ref-text-review reveal"><h3>Дамир Алексеев</h3><p>Решил пару вопросов за один визит, сервис на высоте. Удобно, что все находится в одном месте и врач подробно расписал план лечения.</p></article>
-      <article class="ref-before-after reveal"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=85" alt="Эстетическое лечение"><span>Эстетическая стоматология</span><button class="video-trigger" type="button" data-video-title="Эстетическая стоматология">▶</button></article>
+      <article class="ref-before-after reveal"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=85" alt="Эстетическое лечение" loading="lazy"><span>Эстетическая стоматология</span><button class="video-trigger" type="button" data-video-title="Эстетическая стоматология" aria-label="Открыть видео: эстетическая стоматология"></button></article>
       <article class="ref-text-review reveal"><h3>Ольга Орлова</h3><p>Очень приятный персонал. После консультации стало понятно, какие шаги нужны и сколько времени займет лечение.</p></article>
       <article class="ref-review-stat reveal"><div><span>380+</span><p>позитивных изменений пациентов нашей клиники</p></div><a href="contacts.html#appointment">Записаться ↗</a></article>
     </div>

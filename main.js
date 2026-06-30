@@ -48,7 +48,7 @@ if (videoTriggers.length) {
   modal.className = 'video-modal';
   modal.innerHTML = `
     <div class="video-modal__panel" role="dialog" aria-modal="true" aria-label="Видео Aster Dental">
-      <button class="video-modal__close" type="button" aria-label="Закрыть">×</button>
+      <button class="video-modal__close" type="button" aria-label="Закрыть"></button>
       <span>Видео Aster Dental</span>
       <h3></h3>
       <p>Полную историю пациента покажем на консультации и подберем похожие клинические случаи под ваш запрос.</p>
