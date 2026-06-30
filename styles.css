@@ -19,7 +19,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:"Jost","Manrope",system-ui,sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   background:
     radial-gradient(circle at 15% 0%,rgba(255,255,255,.74),rgba(255,255,255,0) 340px),
     linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 360px),
@@ -290,7 +290,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
   --ref-ink:#343638;
   background:var(--ref-bg);
   color:var(--ref-text);
-  font-family:"Jost","Manrope",system-ui,sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
 }
 .ref-wrap{width:min(1180px,92vw);margin:0 auto}
 .ref-header{position:sticky;background:rgba(247,245,242,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.04)}
@@ -317,7 +317,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .luxe-copy{max-width:790px}
 .luxe-kicker{display:block;margin-bottom:18px;color:var(--ref-accent);font-size:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .ref-hero-top{display:grid;grid-template-columns:1fr 310px;gap:44px;padding:38px 62px 28px;border-bottom:1px solid var(--ref-line)}
-.ref-hero h1{font-family:"Bodoni Moda","Times New Roman",serif;font-size:clamp(58px,7.1vw,112px);font-weight:500;line-height:.96;letter-spacing:0;color:#414344;max-width:none}
+.ref-hero h1{font-family:Arial, Helvetica, sans-serif;font-size:clamp(58px,7.1vw,112px);font-weight:400;line-height:.96;letter-spacing:-.055em;color:#414344;max-width:none}
 .ref-hero h1 span{display:inline-block;color:var(--ref-accent);text-transform:uppercase;letter-spacing:.035em}
 .ref-hero h1 em{font-style:normal;color:var(--ref-accent)}
 .ref-hero-cta{align-self:end}
@@ -358,7 +358,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .ref-section{padding:92px 0}
 .ref-section-head{display:grid;grid-template-columns:240px minmax(0,560px);gap:46px;align-items:start;margin-bottom:42px}
 .ref-chip{display:inline-flex;width:max-content;align-items:center;justify-content:center;min-height:38px;padding:9px 26px;border-radius:999px;background:#fff;color:#909090;font-size:13px;font-weight:700;box-shadow:0 10px 30px rgba(70,65,60,.04)}
-.ref-section h2,.ref-clinic h2,.ref-review-title h2,.ref-location h2{font-family:"Bodoni Moda","Times New Roman",serif;font-size:clamp(38px,4.8vw,70px);line-height:1.02;font-weight:500;letter-spacing:0;color:#3e4142}
+.ref-section h2,.ref-clinic h2,.ref-review-title h2,.ref-location h2{font-family:Arial, Helvetica, sans-serif;font-size:clamp(38px,4.8vw,70px);line-height:1.02;font-weight:400;letter-spacing:-.045em;color:#3e4142}
 .ref-section p{color:#8b8b8b;font-size:17px;line-height:1.45}
 
 .ref-patient-flow{padding-top:38px}
@@ -406,7 +406,7 @@ footer a{display:block;margin:9px 0;font-weight:700}
 .ref-doctor img{width:100%;height:390px;object-fit:cover;object-position:center top;filter:saturate(.88) contrast(.98) sepia(.05)}
 .ref-doctor div{padding:24px}
 .ref-doctor span{color:var(--ref-accent);font-size:18px}
-.ref-doctor h3{font-family:"Bodoni Moda","Times New Roman",serif;font-size:31px;font-weight:500;line-height:1.05;margin:4px 0 12px}
+.ref-doctor h3{font-family:Arial, Helvetica, sans-serif;font-size:31px;font-weight:400;line-height:1.05;letter-spacing:-.035em;margin:4px 0 12px}
 .ref-doctor p{font-size:14px;margin-bottom:22px}
 .ref-doctor a{padding:13px 18px;border-radius:5px}
 
