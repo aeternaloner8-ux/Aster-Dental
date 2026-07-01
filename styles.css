@@ -215,6 +215,22 @@ header.scrolled{background:rgba(244,238,229,.82);backdrop-filter:blur(22px);bord
 .field{display:grid;gap:8px}
 .field label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:900}
 .field input,.field textarea,.field select{border:1px solid var(--line);border-radius:18px;background:#f8fbfa;padding:15px 16px;color:var(--ink);outline:none}
+.field select{
+  appearance:none;
+  -webkit-appearance:none;
+  min-height:56px;
+  padding-right:54px;
+  background-color:#f8fbfa;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #4a443d 50%),
+    linear-gradient(135deg, #4a443d 50%, transparent 50%);
+  background-position:
+    calc(100% - 30px) 50%,
+    calc(100% - 22px) 50%;
+  background-size:8px 8px,8px 8px;
+  background-repeat:no-repeat;
+}
+.field select::-ms-expand{display:none}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(15,143,140,.10)}
 .field textarea{min-height:132px;resize:vertical}
 .form-msg{display:none;border-radius:18px;background:var(--mint);color:var(--teal-dark);padding:16px;font-weight:800}
