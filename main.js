@@ -51,7 +51,7 @@ if (videoTriggers.length) {
       <button class="video-modal__close" type="button" aria-label="Закрыть"></button>
       <span>Видео Aster Dental</span>
       <h3></h3>
-      <p>Полную историю пациента покажем на консультации и подберем похожие клинические случаи под ваш запрос.</p>
+      <p>Полную историю и похожие клинические случаи покажем на консультации, чтобы подобрать аккуратный план под ваш запрос.</p>
       <a class="ref-btn" href="contacts.html#appointment">Записаться на консультацию ↗</a>
     </div>
   `;
